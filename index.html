@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Documento sem título</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,300italic,500,700,400italic,100italic,500italic,700italic" rel="stylesheet" type="text/css">
+  <link href="dependencies/roboto/roboto.css" rel="stylesheet">
+  <link href="dependencies/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="dependencies/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
   <link href="css/sidebar.css" rel="stylesheet">
 </head>
@@ -11,7 +13,10 @@
   <div class="container">
     <div class="top-menu">
     </div>
-    <div class="sidebar">
+    <div id="sidebar-container" class="sidebar-container-bigger">
+      <div id="sidebar-close-div">
+        <img id="sidebar-close-image" src="img/close_icon.png" />
+      </div>
       <div id="sidebar-name-area" class="display-children-inline">
           <a href="#"><img id="sidebar-profile-image" src="img/fulano.png" /></a>
           <ul id="sidebar-profile-info">
@@ -43,5 +48,8 @@
       </div>
     </div>
   </div>
+  <script src="dependencies/jquery/jquery-1.11.3.min.js"></script>
+  <script src="dependencies/bootstrap/js/bootstrap.min.js"></script>
+  <script src="js/sidebar.js"></script>
 </body>
 </html>

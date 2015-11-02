@@ -1,23 +1,60 @@
 @charset "UTF-8";
 /* CSS Document */
 
-.sidebar {
+#sidebar-container {
   margin: 0;
   height: 740px;
-  width: 200px;
   background: #252536;
-    font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+#sidebar-container.sidebar-container-smaller {
+  width: 80px;
+}
+
+#sidebar-container.sidebar-container-bigger {
+  width: 200px;
+}
+
+#sidebar-container.sidebar-container-smaller:hover {
+  background: #202031;
+}
+
+.sidebar-container-smaller #sidebar-profile-info,
+.sidebar-container-smaller #sidebar-big-itens span,
+.sidebar-container-smaller #sidebar-close-div
+ {
+  display: none;
+}
+.sidebar-container-bigger #sidebar-profile-info,
+.sidebar-container-bigger #sidebar-big-itens span,
+.sidebar-container-bigger #sidebar-close-div
+ {
+  display: initial;
+}
+
+#sidebar-close-div {
+  float: right;
+  padding: 2px;
+  margin-right: 13px;
+  margin-top: 13px;
+  cursor: pointer;
+}
+
+#sidebar-close-image {
+  height: 10px;
+  width: 10px;
+}
+
+#sidebar-profile-info {
+  margin-top: 15px;
+  margin-left: 10px;
 }
 
 #sidebar-profile-image {
   width: 50px;
   height: 50px;
   margin: 10px;
-}
-
-#sidebar-profile-info {
-  margin-top: 15px;
-  margin-left: 10px;
 }
 
 #sidebar-name-area {
@@ -34,7 +71,7 @@
   text-decoration: none;
   color: white;
   font-size: 13px;
-  line-height: 40px;
+  line-height: 50px;
 }
 
 #sidebar-big-itens img {
@@ -49,7 +86,7 @@
 }
 
 #sidebar-big-itens span {
-  vertical-align: 8px;
+  vertical-align: -1px;
   margin-left: 10px;
 }
 
