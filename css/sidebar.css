@@ -3,7 +3,7 @@
 
 .sidebar {
   margin: 0;
-  height: 100%;
+  height: 740px;
   width: 200px;
   background: #252536;
     font-family: 'Roboto', sans-serif;
@@ -30,16 +30,27 @@
   padding-left: 20px;
 }
 
-#sidebar-big-itens li > a {
+#sidebar-big-itens a {
   text-decoration: none;
   color: white;
   font-size: 13px;
   line-height: 40px;
 }
 
+#sidebar-big-itens img {
+  width: 25px;
+  height: 25px;
+  margin-left: 7px;
+}
+
 #sidebar-profile-name {
   color: white;
   font-size: 13px;
+}
+
+#sidebar-big-itens span {
+  vertical-align: 8px;
+  margin-left: 10px;
 }
 
 #sidebar-profile-edit {
