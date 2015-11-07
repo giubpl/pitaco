@@ -42,12 +42,12 @@
   background: url("../img/lamp_btn.png") no-repeat;
 }
 #lamp-btn-top-menu.active-display {
-  background: url("../img/search_btn_action.png") no-repeat;
+  background: url("../img/lamp_btn_active.png") no-repeat;
 }
 
 #eye-btn-top-menu.normal-display {
-  background: url("../img/eye_btn.png") no-repeat;
+  background: url("../img/expand_btn copy.png") no-repeat;
 }
 #eye-btn-top-menu.active-display {
-  background: url("../img/search_btn_action.png") no-repeat;
+  background: url("../img/expand_btn_active.png") no-repeat;
 }
