@@ -31,22 +31,28 @@
 
 #sidebar-expand-collapse {
   float: right;
-  padding: 2px;
-  margin-right: 13px;
-  margin-top: 13px;
-  background-size: cover;
+  margin-right: 10px;
+  margin-top: 10px;
+  height: 19px;
+  width: 16px;
 }
 
-.collapse-display {
-  background: url("../img/close_icon.png") no-repeat;
-  height: 10px;
-  width: 10px;
-}
-
-.expand-display {
-  background: url("../img/arrow_icon.png") no-repeat;
+#sidebar-expand-icon {
   height: 15px;
   width: 9px;
+  background-size: cover;
+  margin-left: 2px;
+  margin-right: 5px;
+  margin-top: 2px;
+  margin-right: 2px;
+}
+
+.collapse-display #sidebar-expand-icon {
+  background: url("../img/arrow_icon_left.png") no-repeat;
+}
+
+.expand-display #sidebar-expand-icon {
+  background: url("../img/arrow_icon_right.png") no-repeat;
 }
 
 #sidebar-profile-info {
