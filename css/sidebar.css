@@ -8,16 +8,12 @@
   font-family: 'Roboto', sans-serif;
 }
 
-#sidebar-container.sidebar-container-smaller {
+.sidebar-container-smaller {
   width: 80px;
 }
 
-#sidebar-container.sidebar-container-bigger {
+.sidebar-container-bigger {
   width: 200px;
-}
-
-#sidebar-container.sidebar-container-smaller:hover {
-  background: #202031;
 }
 
 .sidebar-container-smaller #sidebar-profile-info,
@@ -33,17 +29,24 @@
   display: initial;
 }
 
-#sidebar-close-div {
+#sidebar-expand-collapse {
   float: right;
   padding: 2px;
   margin-right: 13px;
   margin-top: 13px;
-  cursor: pointer;
+  background-size: cover;
 }
 
-#sidebar-close-image {
+.collapse-display {
+  background: url("../img/close_icon.png") no-repeat;
   height: 10px;
   width: 10px;
+}
+
+.expand-display {
+  background: url("../img/arrow_icon.png") no-repeat;
+  height: 15px;
+  width: 9px;
 }
 
 #sidebar-profile-info {
