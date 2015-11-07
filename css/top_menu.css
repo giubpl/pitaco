@@ -24,15 +24,11 @@
   float: right;
 }
 
-.top-buttons-area img {
+.top-buttons-area > div {
   cursor: pointer;
   display: inline;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 60px;
-  height: 55px;
   padding-left: 60px;
-
+  padding-bottom: 55px;
 }
 
 #search-btn-top-menu {
