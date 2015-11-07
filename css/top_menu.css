@@ -16,7 +16,7 @@
 }
 
 #logo-top-menu {
-  padding-left: 10px;
+  padding-left: 20px;
   padding-top: 15px;
 }
 
@@ -29,7 +29,7 @@
   display: inline-block;
   width: 36px;
   height: 36px;
-  margin-right: 15px;
+  margin-right: 20px;
   border-radius:36px;
   box-shadow: 1px 0px 4px rgba(0,0,0,0.3);
   -o-box-shadow: 1px 0px 4px rgba(0,0,0,0.3);
