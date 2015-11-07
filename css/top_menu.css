@@ -7,14 +7,51 @@
   height: 60px;
   width: 100%;
   background-color: #51515e;
-  /*background-image: url(../img/menu_expand_V06-Recovered.jpg);*/
 }
 
-#logo-top-menu{
+#topmenu-search-form {
+  padding-top: 13.5px;
+  padding-right: 5px;
+  width: 200px;
+}
+
+#logo-top-menu {
   padding-left: 10px;
   margin-top: 15px;
 }
 
-.top-buttons-area{
+.top-buttons-area {
   float: right;
+}
+
+.top-buttons-area img {
+  cursor: pointer;
+  display: inline;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 60px;
+  height: 55px;
+  padding-left: 60px;
+
+}
+
+#search-btn-top-menu {
+  background: url("../img/search_btn.png") no-repeat;
+}
+#search-btn-top-menu:active {
+  background: url("../img/search_btn_action.png") no-repeat;
+}
+
+#lamp-btn-top-menu.normal-display {
+  background: url("../img/lamp_btn.png") no-repeat;
+}
+#lamp-btn-top-menu.active-display {
+  background: url("../img/search_btn_action.png") no-repeat;
+}
+
+#eye-btn-top-menu.normal-display {
+  background: url("../img/eye_btn.png") no-repeat;
+}
+#eye-btn-top-menu.active-display {
+  background: url("../img/search_btn_action.png") no-repeat;
 }

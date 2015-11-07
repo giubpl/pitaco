@@ -15,9 +15,12 @@
     <div class="top-menu">
       <img src="img/logo.png" id="logo-top-menu"/>
       <div class="top-buttons-area">
-          <img id="search-btn-top-menu" src="img/search_btn copy.png"/>
-          <img id="lamp-btn-top-menu" src="img/lamp_btn.png"/>
-          <img id="eye-btn-top-menu" src="img/eye_btn.png"/>
+          <form id="topmenu-search-form" class="navbar-left" role="search">
+              <input type="text" class="form-control" placeholder="Buscar ">
+          </form>
+          <img id="search-btn-top-menu"/>
+          <img id="lamp-btn-top-menu" class="normal-display"/>
+          <img id="eye-btn-top-menu" class="normal-display"/>
       </div>
     </div>
     <div id="sidebar-container" class="sidebar-container-bigger">
@@ -58,5 +61,6 @@
   <script src="dependencies/jquery/jquery-1.11.3.min.js"></script>
   <script src="dependencies/bootstrap/js/bootstrap.min.js"></script>
   <script src="js/sidebar.js"></script>
+  <script src="js/topmenu.js"></script>
 </body>
 </html>
