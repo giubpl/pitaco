@@ -20,13 +20,6 @@ span, a {
   -o-user-select: text;
 }
 
-#page-container {
-  height: 740px;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 #main-page {
   height: 100%;
   width: 100%;

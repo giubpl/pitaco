@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var container = $("#page-container");
+  var container = $("#sidebar-and-page-container");
   var expand_collapse_div = $("#sidebar-expand-collapse");
 
   expand_collapse_div.click(function() {

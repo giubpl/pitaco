@@ -7,12 +7,18 @@
   height: 60px;
   width: 100%;
   background-color: #51515e;
+  position: fixed;
+}
+
+#sidebar-and-page-container {
+  padding-top: 60px;
 }
 
 #topmenu-search-form {
   padding-top: 0px;
   padding-right: 10px;
   width: 200px;
+  vertical-align: top;
 }
 
 #logo-top-menu {
@@ -26,7 +32,6 @@
 }
 
 .top-buttons-area > div {
-  display: inline-block;
   width: 36px;
   height: 36px;
   margin-right: 20px;
@@ -35,6 +40,10 @@
   -o-box-shadow: 1px 0px 4px rgba(0,0,0,0.3);
   -moz-box-shadow: 1px 0px 4px rgba(0,0,0,0.3);
   -webkit-box-shadow: 1px 0px 4px rgba(0,0,0,0.3);
+}
+
+.top-buttons-area > * {
+    display: inline-block;
 }
 
 #search-btn-top-menu {
