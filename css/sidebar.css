@@ -38,8 +38,8 @@
 
 #sidebar-expand-collapse {
   float: right;
-  margin-right: 3px;
-  margin-top: 7px;
+  margin-right: 27px;
+  margin-top: 20px;
   height: 19px;
   width: 16px;
 }
@@ -50,13 +50,14 @@
   background-size: cover;
   margin-left: 2px;
   margin-right: 5px;
-  margin-top: 2px;
+  margin-top: 5px;
   margin-right: 2px;
 }
 
 .collapse-display #sidebar-expand-icon {
   background: url("../img/arrow_icon_left.png") no-repeat;
 }
+
 
 .expand-display #sidebar-expand-icon {
   background: url("../img/arrow_icon_right.png") no-repeat;
@@ -74,7 +75,7 @@
 }
 
 #sidebar-name-area {
-  padding-top: 30px;
+  padding-top: 60px;
   padding-bottom: 100px;
   padding-left: 5px;
 }
