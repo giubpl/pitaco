@@ -10,8 +10,9 @@
   position: fixed;
 }
 
-#sidebar-and-page-container {
-  padding-top: 60px;
+#sidebar-container,
+#page-container {
+  top: 60px;
 }
 
 #topmenu-search-form {

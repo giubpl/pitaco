@@ -1,6 +1,6 @@
 var PageFlow = {
   setMainPage: function(name) {
-    $("#main-page").load(name+".html");
+    $("#page-container").load(name+".html");
     $("#main-page-stylesheet").attr("href", "css/"+name+".css");
   }
 };

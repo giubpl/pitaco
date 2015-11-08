@@ -3,7 +3,8 @@
 
 #sidebar-container {
   margin: 0;
-  height: 100%;
+  left: 0px;
+  bottom: 0px;
   background: #252536;
   font-family: 'Roboto', sans-serif;
   position: fixed;
@@ -13,14 +14,14 @@
   width: 80px;
 }
 .sidebar-container-smaller #page-container {
-  padding-left: 80px;
+  left: 80px;
 }
 
 .sidebar-container-bigger #sidebar-container {
   width: 200px;
 }
 .sidebar-container-bigger #page-container {
-  padding-left: 200px;
+  left: 200px;
 }
 
 .sidebar-container-smaller #sidebar-profile-info,
