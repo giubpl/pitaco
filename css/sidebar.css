@@ -6,14 +6,21 @@
   height: 740px;
   background: #252536;
   font-family: 'Roboto', sans-serif;
+  position: absolute;
 }
 
-.sidebar-container-smaller {
+.sidebar-container-smaller #sidebar-container {
   width: 80px;
 }
+.sidebar-container-smaller #main-page {
+  padding-left: 80px;
+}
 
-.sidebar-container-bigger {
+.sidebar-container-bigger #sidebar-container {
   width: 200px;
+}
+.sidebar-container-bigger #main-page {
+  padding-left: 200px;
 }
 
 .sidebar-container-smaller #sidebar-profile-info,
@@ -31,8 +38,8 @@
 
 #sidebar-expand-collapse {
   float: right;
-  margin-right: 10px;
-  margin-top: 10px;
+  margin-right: 3px;
+  margin-top: 7px;
   height: 19px;
   width: 16px;
 }
