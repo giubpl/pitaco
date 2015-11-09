@@ -1,16 +1,20 @@
 #page-container {
   box-sizing: border-box;
-  justify-content: center;
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   display: flex;
+  display: -webkit-flex;
+  -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-justify-content: center;
+  justify-content: center;
   overflow-y: scroll;
   padding-top: 20px;
 }
 
 .card {
-width: 286px;
-height: 315px;
-margin: 20px;
+  width: 286px;
+  height: 315px;
+  margin: 20px;
 }
