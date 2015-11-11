@@ -7,6 +7,6 @@ var PageFlow = {
 
 $(document).ready(function() {
 
-  PageFlow.setMainPage("initial_page");
+  PageFlow.setMainPage("pitaco_net");
 
 });
