@@ -3,8 +3,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-  id="pitaco-net-svg"
-  viewBox="0 0 1064.9 739.9" enable-background="new 0 0 1064.9 739.9" xml:space="preserve">
+  id="pitaco-net-svg" viewBox="0 0 1064.9 739.9" enable-background="new 0 0 1064.9 739.9" xml:space="preserve">
   <rect width="100%" height="100%" style="fill:none; pointer-events:all"></rect>
   <g id="pitaco-net-zoom-group" stroke="white" stroke-width="1">
     <g id="pitaco-tree" transform="translate(50, -80)">
@@ -41,6 +40,15 @@
           </g>
           <circle fill="none" cx="730.2" cy="252.7" r="18.2"/>
         </g>
+        <g style="visibility: visible;"> <!-- nova bolinha (remover style) -->
+          <line x1="586.5" y1="305.5" x2="670" y2="333" /> <!-- liga a primeira bolinha ao novo circulo -->
+          <g class="pitaco-circle">
+            <pattern id="brown-plant-pattern" x="0" y="0" height="100%" width="100%" patternContentUnits="objectBoundingBox">
+              <image  xlink:href="img/fulano.jpg" height="1" width="1" preserveAspectRatio="xMidYMid slice"></image>
+            </pattern>
+            <circle fill="url(#brown-plant-pattern)" cx="670" cy="333" r="18.2"/>
+          </g>
+        </g>  <!-- nova bolinha (fim) -->
       </g>
       <g id="branch-texto-allergio">
         <circle cx="656.8" cy="427.8" r="8"/>
