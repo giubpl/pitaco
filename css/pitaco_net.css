@@ -1,6 +1,48 @@
-#branch-icons-allergio {
-    fill: #BBBBBB;
-    stroke: #BBBBBB;
-    stroke-width: 3;
-    stroke-miterlimit: 10;
+#pitaco-tree {
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  opacity: 0.85;
+  fill: #BBBBBB;
+  stroke: #BBBBBB;
+}
+
+.pitaco-circle {
+  stroke-width: 3;
+  stroke-miterlimit: 10;
+  opacity: 0.85;
+}
+
+.pitaco-circle:hover {
+  opacity: 1;
+}
+
+#branch-icons-allergio:hover {
+  fill: #BBBB00;
+  stroke: #BBBB00;
+}
+
+#branch-texto-allergio:hover {
+  fill: #00BB00;
+  stroke: #00BB00;
+}
+
+#branch-similares-allergio:hover {
+  fill: #00AAFF;
+  stroke: #00AAFF;
+}
+
+#branch-layer-6:hover {
+  fill: #FF3333;
+  stroke: #FF3333;
+}
+
+#branch-layer-7:hover {
+  fill: #0FF3C3;
+  stroke: #0FF3C3;
+}
+
+#net-central:hover {
+  fill: #FFFFFF;
+  stroke: #FFFFFF;
+  opacity: 1;
 }
