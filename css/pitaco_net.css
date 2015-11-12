@@ -1,7 +1,7 @@
 #pitaco-tree {
   stroke-width: 2;
   stroke-miterlimit: 10;
-  opacity: 0.85;
+  opacity: 1;
   fill: #BBBBBB;
   stroke: #BBBBBB;
 }
@@ -9,7 +9,7 @@
 .pitaco-circle {
   stroke-width: 3;
   stroke-miterlimit: 10;
-  opacity: 0.85;
+  opacity: 1;
 }
 
 .pitaco-circle:hover {
@@ -17,28 +17,28 @@
 }
 
 #branch-icons-allergio:hover {
-  fill: #BBBB00;
-  stroke: #BBBB00;
+  fill: #2ecc71;
+  stroke: #2ecc71;
 }
 
 #branch-texto-allergio:hover {
-  fill: #00BB00;
-  stroke: #00BB00;
+  fill: #f1c40f;
+  stroke: #f1c40f;
 }
 
 #branch-similares-allergio:hover {
-  fill: #00AAFF;
-  stroke: #00AAFF;
+  fill: #1abc9c;
+  stroke: #1abc9c;
 }
 
 #branch-layer-6:hover {
-  fill: #FF3333;
-  stroke: #FF3333;
+  fill: #e74c3c;
+  stroke: #e74c3c;
 }
 
 #branch-layer-7:hover {
-  fill: #0FF3C3;
-  stroke: #0FF3C3;
+  fill: #e67e22;
+  stroke: #e67e22;
 }
 
 #net-central:hover {
