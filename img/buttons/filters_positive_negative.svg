@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 104.9 129.7" enable-background="new 0 0 104.9 129.7" xml:space="preserve">
+<g id="filter-white-line">
+	
+		<line id="_x3C_filter-white-line-02_x3E_" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="88.5" y1="57.4" x2="88.5" y2="108.4"/>
+</g>
+<g id="negative-red-circle">
+	<circle id="_x3C_negative-red-circle-02_x3E_" fill="#E54D42" cx="88.5" cy="107.4" r="8"/>
+</g>
+<g id="label-negativos">
+	<rect x="4.2" y="103.4" fill="none" width="61.8" height="12"/>
+	<text transform="matrix(1 0 0 1 4.1855 113.8792)" fill="#FFFFFF" font-family="'Roboto-Light'" font-size="14">Negativos</text>
+</g>
+<g id="positive-green-circle">
+	<circle id="_x3C_positive-green-circle-02_x3E_" fill="#29BB9C" cx="88.5" cy="57.4" r="8"/>
+</g>
+<g id="label-positivos">
+	<rect x="10.2" y="53.4" fill="none" width="56.6" height="12"/>
+	<text transform="matrix(1 0 0 1 10.1855 63.8792)" fill="#FFFFFF" font-family="'Roboto-Light'" font-size="14">Positivos</text>
+</g>
+<g id="label-filtros">
+	<rect x="45.8" y="7.4" fill="none" width="51.7" height="19"/>
+	<text transform="matrix(1 0 0 1 45.7684 20.8792)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="18">Filtros</text>
+</g>
+</svg>

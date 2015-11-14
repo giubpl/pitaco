@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 262.5 77.5" enable-background="new 0 0 262.5 77.5" xml:space="preserve">
+<g id="giulia-image-profile">
+	<g id="_x3C_clip-giulia-image-profile_x3E_">
+		<defs>
+			<circle id="_x3C_mask-giulia-image-profile_x3E_" cx="37.8" cy="42" r="33.3"/>
+		</defs>
+		<clipPath id="_x3C_mask-giulia-image-profile_x3E__1_">
+			<use xlink:href="#_x3C_mask_x002D_giulia_x002D_image_x002D_profile_x3E_"  overflow="visible"/>
+		</clipPath>
+		<g clip-path="url(#_x3C_mask-giulia-image-profile_x3E__1_)">
+			
+				<image overflow="visible" width="266" height="266" id="_x3C_giulia-image-profile-02_x3E_" xlink:href="../../../../Downloads/1238977_3306534039568_1727630105_n.jpg"  transform="matrix(0.2506 0 0 0.2506 4.4262 8.8552)">
+			</image>
+		</g>
+	</g>
+</g>
+<g id="white-border-circle-user-giulia">
+	
+		<circle id="_x3C_white-border-circle-giulia_x3E_" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" cx="37.8" cy="42" r="33.3"/>
+</g>
+<g id="author-infos">
+	<g id="_x3C_info-project-author_x3E_">
+		<rect x="87.2" y="12.5" fill="none" width="85.8" height="19"/>
+		<text transform="matrix(1 0 0 1 87.1667 25.9593)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="18">Giulia Bins</text>
+		<rect x="87.2" y="34.5" fill="none" width="55.5" height="19"/>
+		<text transform="matrix(1 0 0 1 87.1667 44.9593)" fill="#FFFFFF" font-family="'Roboto-Light'" font-size="14">Designer</text>
+		<rect x="87.2" y="52.5" fill="none" width="96.2" height="13.9"/>
+		<text transform="matrix(1 0 0 1 87.1667 62.9562)" fill="#3A99D8" font-family="'Roboto-Bold'" font-size="14">outros projetos</text>
+	</g>
+</g>
+</svg>
