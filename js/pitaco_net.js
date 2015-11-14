@@ -2,8 +2,7 @@ $(document).ready(function() {
 
   //SETAR PARA TRUE QUANDO QUISER VER AS COORDENADAS PARA MONTAR O SVG
   //NAO ESQUECE QUE TEM QUE SER DUPLO CLIQUE
-  var justAlertCoordinates = false;
-  //OI GIULIA!!! AQUI!!!
+  var justAlertCoordinates = true;
 
   var svg = d3.select("#pitaco-net-svg");
   var box = svg.node().getBBox();
