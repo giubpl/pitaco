@@ -1,5 +1,202 @@
-$(document).ready(function() {
+function PitacoDrawerHelper() {
+  this.centralRadius = 37;
+  this.branchRadius = 8;
+  this.pitacoRadius = 18;
 
+  this.centralProject = {
+    cx: 480,
+    cy: 425,
+    img: "img/B943C0108560459E.jpg"
+  }
+
+  this.branches = [
+    {
+      name: "branch-texto-allergio",
+      cx: 657,
+      cy: 428,
+      pitacos:
+        [
+          {
+            img: "img/fulano.jpg",
+            cx: 800,
+            cy: 374,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 827,
+            cy: 561,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 807,
+            cy: 458,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 743,
+            cy: 607,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 844,
+            cy: 413,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 723,
+            cy: 306,
+            text: ""
+          },
+        ]
+    },
+    {
+      name: "branch-similares-allergio",
+      cx: 310,
+      cy: 428,
+      pitacos:
+        [
+          {
+            img: "img/fulano.jpg",
+            cx: 351,
+            cy: 218,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 271,
+            cy: 175,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 195,
+            cy: 285,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 140,
+            cy: 340,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 120,
+            cy: 440,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 215,
+            cy: 546,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 200,
+            cy: 200,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 103,
+            cy: 248,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 315,
+            cy: 115,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 50,
+            cy: 360,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 94,
+            cy: 560,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 245,
+            cy: 656,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 310,
+            cy: 660,
+            text: ""
+          },
+        ]
+    }
+  ];
+
+  this.idCounter = 0;
+}
+
+PitacoDrawerHelper.prototype.drawCircleWithImage = function(element, circleInfo, radius) {
+  var uniqueId = "pitaco-net-id-" + (this.idCounter++);
+  var circleGroup = element.append("g");
+  var clipPath = circleGroup.append("clipPath")
+                .attr("id", uniqueId)
+                .append("circle")
+                      .attr("cx", circleInfo.cx)
+                      .attr("cy", circleInfo.cy)
+                      .attr("r", radius);
+  circleGroup.append("image")
+                .attr("x", circleInfo.cx - radius)
+                .attr("y", circleInfo.cy - radius)
+                .attr("width", 2*radius)
+                .attr("height", 2*radius)
+                .attr("xlink:href", circleInfo.img)
+                .attr("clip-path", "url(#" + uniqueId + ")");
+  circleGroup.append("circle")
+                .attr("fill", "none")
+                .attr("cx", circleInfo.cx)
+                .attr("cy", circleInfo.cy)
+                .attr("r", radius);
+  return circleGroup;
+}
+
+PitacoDrawerHelper.prototype.drawSimpleCircle = function(element, circleInfo, radius) {
+  return element.append("circle").attr("cx", circleInfo.cx).attr("cy", circleInfo.cy).attr("r", radius);
+}
+
+PitacoDrawerHelper.prototype.drawLine = function(element, x1, y1, x2, y2) {
+  return element.append("line").attr("x1", x1).attr("y1", y1).attr("x2", x2).attr("y2", y2);
+}
+
+PitacoDrawerHelper.prototype.drawPitacoNet = function() {
+  var pitacoTree = d3.select("#pitaco-tree");
+
+  this.branches.forEach(function drawBranch(branchInfo) {
+
+    var branch = pitacoTree.append("g").attr("id", branchInfo.name);
+    this.drawSimpleCircle(branch, branchInfo, this.branchRadius);
+    this.drawLine(branch, this.centralProject.cx, this.centralProject.cy, branchInfo.cx, branchInfo.cy);
+
+    branchInfo.pitacos.forEach(function drawPitaco(pitacoInfo) {
+      this.drawLine(branch, branchInfo.cx, branchInfo.cy, pitacoInfo.cx, pitacoInfo.cy);
+      this.drawCircleWithImage(branch, pitacoInfo, this.pitacoRadius).attr("class", "pitaco-circle");
+    }.bind(this));
+
+  }.bind(this));
+
+  this.drawCircleWithImage(pitacoTree, this.centralProject, this.centralRadius).attr("id", "net-central");
+}
+
+PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {
   var svg = d3.select("#pitaco-net-svg");
   var box = svg.node().getBBox();
   var xScale = d3.scale.linear().domain([0, box.width]).range([0, box.width]);
@@ -11,15 +208,19 @@ $(document).ready(function() {
                   .x(xScale)
                   .y(yScale)
                   .on("zoom", function() {
-                    if(d3.event.defaultPrevented) return;
-                    console.log(JSON.stringify(d3.event));
                     zoom_group.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
                   });
 
   svg.call(zoomer)
       .on("dblclick.zoom", null)
+      //FIXME: this is a hack! Remove when development is finished
       .on("dblclick", function() {
           alert("cx=" + (d3.event.x-260) + " cy=" + (d3.event.y+15));
       });
+}
 
+$(document).ready(function() {
+  var drawer = new PitacoDrawerHelper();
+  drawer.drawPitacoNet();
+  drawer.addZoomerBehaviour();
 });
