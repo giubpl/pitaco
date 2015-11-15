@@ -1,11 +1,11 @@
 var PageFlow = {
   setMainPage: function(name) {
-    $("#page-container").load(name+".html");
+    $('#page-tab-activator a[href="#'+name+'"]').tab("show");
   }
 };
 
 $(document).ready(function() {
 
-  PageFlow.setMainPage("pitaco_net");
+  PageFlow.setMainPage("pitaco-net");
 
 });

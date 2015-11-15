@@ -10,10 +10,12 @@
   <link href="css/main.css" rel="stylesheet" />
   <link href="css/sidebar.css" rel="stylesheet" />
   <link href="css/top_menu.css" rel="stylesheet" />
+  <link href="css/pitaco_net.css" rel="stylesheet" />
+  <link href="css/initial_page.css" rel="stylesheet" />
 </head>
 <body>
   <div class="top-menu">
-    <a href="#"><img src="img/logos/logo_01.svg" id="logo-top-menu"/></a>
+    <img class="link-to-initial-page image-display" src="img/logos/logo_01.svg" id="logo-top-menu" />
     <div class="top-buttons-area">
         <form id="topmenu-search-form" class="navbar-left" role="search">
             <input type="text" class="form-control" placeholder="Buscar ">
@@ -29,7 +31,7 @@
         <div id="sidebar-expand-icon"></div>
       </div>
       <div id="sidebar-name-area" class="display-children-inline">
-          <a href="#"><img id="sidebar-profile-image" src="img/fulano.png" /></a>
+          <img class="link-to-initial-page image-display" id="sidebar-profile-image" src="img/fulano.png" />
           <ul id="sidebar-profile-info">
             <li id="sidebar-profile-name">Fulano de tal</li>
             <li><a href="#" id="sidebar-profile-edit">editar perfil</a></li>
@@ -58,8 +60,41 @@
         </ul>
       </div>
     </div>
-    <div id="page-container">
+
+    <ul id="page-tab-activator" class="nav nav-tabs hide">
+      <li><a href="#initial-page" data-toggle="tab" role="tab"></a></li>
+      <li><a href="#pitaco-net" data-toggle="tab" role="tab"></a></li>
+   </ul>
+
+    <div id="page-container" class="tab-content">
+
+      <div id="initial-page" class="tab-pane fade">
+        <img class="card" src="img/card01.png"/>
+        <img class="card" src="img/card02.png"/>
+        <img class="card" src="img/card03.png"/>
+        <img class="card" src="img/card04.png"/>
+        <img class="card" src="img/card05.png"/>
+        <img class="card" src="img/card06.png"/>
+        <img class="card" src="img/card07.png"/>
+        <img class="card" src="img/card08.png"/>
+        <img class="card" src="img/card09.png"/>
+      </div>
+
+      <div id="pitaco-net" class="tab-pane fade">
+        <?xml version="1.0" encoding="utf-8"?>
+        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          id="pitaco-net-svg" x="0px" y="0px" width="100%" height="100%" xml:space="preserve">
+          <rect width="100%" height="100%" style="fill:none; pointer-events:all"></rect>
+          <g id="pitaco-net-zoom-group" stroke="white" stroke-width="1">
+            <g id="pitaco-tree" transform="translate(50, -80)">
+            </g>
+          </g>
+        </svg>
+      </div>
+
     </div>
+
   </div>
   <script src="dependencies/d3/d3.v3.min.js"></script>
 	<script src="dependencies/d3/d3plus.min.js"></script>
@@ -67,6 +102,8 @@
   <script src="dependencies/bootstrap/js/bootstrap.min.js"></script>
   <script src="js/sidebar.js"></script>
   <script src="js/topmenu.js"></script>
+  <script src="js/pitaco_net.js"></script>
+  <script src="js/initial_page.js"></script>
   <script src="js/pageflow.js"></script>
 </body>
 </html>

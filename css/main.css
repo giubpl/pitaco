@@ -25,6 +25,7 @@ span, a {
     bottom: 0px;
     background: #0e0b1f;
     position: fixed;
+    overflow-y: scroll;
 }
 
 .image-display {

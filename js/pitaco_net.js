@@ -17,8 +17,8 @@ function PitacoDrawerHelper() {
         [
           {
             img: "img/fulano.jpg",
-            cx: 712,
-            cy: 725,
+            cx: 722,
+            cy: 695,
             text: ""
           },
           {
@@ -238,6 +238,7 @@ PitacoDrawerHelper.prototype.drawLine = function(element, x1, y1, x2, y2) {
 
 PitacoDrawerHelper.prototype.drawPitacoNet = function() {
   var pitacoTree = d3.select("#pitaco-tree");
+  pitacoTree.html("");
 
   this.branches.forEach(function drawBranch(branchInfo) {
 
@@ -274,7 +275,10 @@ PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {
       .on("dblclick.zoom", null)
       //FIXME: this is a hack! Remove when development is finished
       .on("dblclick", function() {
-          alert("cx=" + (d3.event.x-260-105) + " cy=" + (d3.event.y+15));
+          var pt = svg.node().createSVGPoint();
+          pt.x = d3.event.x; pt.y = d3.event.y;
+          pt = pt.matrixTransform(svg.node().getScreenCTM().inverse());
+          alert("cx=" + (pt.x-50) + " cy=" + (pt.y+80));
       });
 }
 
