@@ -205,6 +205,21 @@ function PitacoDrawerHelper() {
           },
         ]
     },
+    {
+      name: "branch-icons-allergio",
+      filterText: "Não sei",
+      cx: 513,
+      cy: 302,
+      pitacos:
+        [
+          {
+            img: "img/fulano.jpg",
+            cx: 551,
+            cy: 218,
+            text: ""
+          },
+        ]
+    }
   ];
 
   this.idCounter = 0;

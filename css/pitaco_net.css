@@ -63,6 +63,7 @@
   top: 80px;
   right: 20px;
   width: 100px;
+  height: 180px;
 }
 
 #pitaco-tree {
@@ -80,11 +81,6 @@
 
 .pitaco-circle:hover {
   opacity: 1;
-}
-
-#branch-icons-allergio:hover {
-  fill: #2ecc71;
-  stroke: #2ecc71;
 }
 
 .filters-activated > * {
@@ -120,6 +116,13 @@
 #button-filter-branch-similares-allergio {
   fill: #1abc9c;
   stroke: #1abc9c;
+}
+
+#branch-icons-allergio:hover,
+#branch-icons-allergio.active-display,
+#button-filter-branch-icons-allergio  {
+  fill: #e67e22;
+  stroke: #e67e22;
 }
 
 #branch-layer-6:hover {
