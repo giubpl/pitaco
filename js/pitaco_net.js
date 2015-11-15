@@ -2,6 +2,10 @@ function PitacoDrawerHelper() {
   this.centralRadius = 40;
   this.branchRadius = 8;
   this.pitacoRadius = 15;
+  this.filterButtonsCx = 88;
+  this.filterButtonsCy = 57;
+  this.filterButtonsIncreaseY = 50;
+  this.filterTextDistanceX = 25;
   this.centralProject = {
     cx: 480,
     cy: 425,
@@ -10,99 +14,8 @@ function PitacoDrawerHelper() {
 
   this.branches = [
     {
-      name: "branch-texto-allergio",
-      cx: 660,
-      cy: 430,
-      pitacos:
-        [
-          {
-            img: "img/fulano.jpg",
-            cx: 722,
-            cy: 695,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 670,
-            cy: 205,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 726,
-            cy: 160,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 800,
-            cy: 374,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 827,
-            cy: 561,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 807,
-            cy: 458,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 743,
-            cy: 607,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 844,
-            cy: 413,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 723,
-            cy: 306,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 861,
-            cy: 241,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 839,
-            cy: 700,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 922,
-            cy: 597,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 883,
-            cy: 680,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 670,
-            cy: 697,
-            text: ""
-          },
-        ]
-    },
-    {
       name: "branch-similares-allergio",
+      filterText: "Positivos",
       cx: 310,
       cy: 428,
       pitacos:
@@ -198,10 +111,104 @@ function PitacoDrawerHelper() {
             text: ""
           },
         ]
-    }
+    },
+    {
+      name: "branch-texto-allergio",
+      filterText: "Negativos",
+      cx: 660,
+      cy: 430,
+      pitacos:
+        [
+          {
+            img: "img/fulano.jpg",
+            cx: 722,
+            cy: 695,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 670,
+            cy: 205,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 726,
+            cy: 160,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 800,
+            cy: 374,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 827,
+            cy: 561,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 807,
+            cy: 458,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 743,
+            cy: 607,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 844,
+            cy: 413,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 723,
+            cy: 306,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 861,
+            cy: 241,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 839,
+            cy: 700,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 922,
+            cy: 597,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 883,
+            cy: 680,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 670,
+            cy: 697,
+            text: ""
+          },
+        ]
+    },
   ];
 
   this.idCounter = 0;
+  this.activeBranchName = "";
 }
 
 PitacoDrawerHelper.prototype.drawCircleWithImage = function(element, circleInfo, radius) {
@@ -234,6 +241,50 @@ PitacoDrawerHelper.prototype.drawSimpleCircle = function(element, circleInfo, ra
 
 PitacoDrawerHelper.prototype.drawLine = function(element, x1, y1, x2, y2) {
   return element.append("line").attr("x1", x1).attr("y1", y1).attr("x2", x2).attr("y2", y2);
+}
+
+PitacoDrawerHelper.prototype.switchActiveBranch = function(newActiveBranchName) {
+  if(this.activeBranchName) {
+    d3.select("#" + this.activeBranchName).classed("active-display", false);
+    d3.select("#button-filter-" + this.activeBranchName).classed("active-display", false);
+  }
+  if(newActiveBranchName == this.activeBranchName) {
+    this.activeBranchName = "";
+    d3.select("#pitaco-tree").classed("filters-activated", false);
+  }
+  else {
+    this.activeBranchName = newActiveBranchName;
+    d3.select("#" + this.activeBranchName).classed("active-display", true);
+    d3.select("#button-filter-" + this.activeBranchName).classed("active-display", true);
+    d3.select("#pitaco-tree").classed("filters-activated", true);
+  }
+}
+
+PitacoDrawerHelper.prototype.drawFilters = function() {
+  var filtersArea = d3.select("#filter-line-group");
+  filtersArea.html("");
+
+  var cx = this.filterButtonsCx;
+  var cy = this.filterButtonsCy;
+  var lastcy = this.filterButtonsCy + (this.branches.length-1) * this.filterButtonsIncreaseY;
+  this.drawLine(filtersArea, cx, cy, cx, lastcy).attr("id", "branch-filter-line");
+  this.branches.forEach(function drawFilter(branchInfo, index) {
+    cy = this.filterButtonsCy + index * this.filterButtonsIncreaseY;
+    this.drawLine(filtersArea, cx, cy, cx, cy)
+            .attr("class", "branch-filter-button")
+            .attr("id", "button-filter-"+branchInfo.name)
+            .on("click", function() {
+                this.switchActiveBranch(branchInfo.name)
+            }.bind(this));
+
+    filtersArea.append("text")
+            .attr("font-weight", 300)
+            .attr("font-size", "13px")
+            .attr("x", cx - this.filterTextDistanceX)
+            .attr("y", cy + this.branchRadius*3/4)
+            .attr("text-anchor", "end")
+            .text(branchInfo.filterText);
+  }.bind(this));
 }
 
 PitacoDrawerHelper.prototype.drawPitacoNet = function() {
@@ -285,5 +336,6 @@ PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {
 $(document).ready(function() {
   var drawer = new PitacoDrawerHelper();
   drawer.drawPitacoNet();
+  drawer.drawFilters();
   drawer.addZoomerBehaviour();
 });

@@ -3,6 +3,15 @@
   height: 100%;
 }
 
+#pitaco-net text {
+  fill: #FFFFFF;
+  font-family: 'Roboto';
+}
+
+#button-dar-pitaco path {
+  fill: #3498DB;
+}
+
 #button-dar-pitaco {
   position:fixed;
   bottom: 50px;
@@ -16,10 +25,17 @@
   opacity: 1;
 }
 
+#pitaco-net-filters {
+  position:fixed;
+  top: 100px;
+  right: 30px;
+  width: 100px;
+  cursor: default;
+}
+
 #pitaco-tree {
   stroke-width: 2;
   stroke-miterlimit: 10;
-  opacity: 1;
   fill: #BBBBBB;
   stroke: #BBBBBB;
 }
@@ -39,12 +55,37 @@
   stroke: #2ecc71;
 }
 
-#branch-texto-allergio:hover {
+.filters-activated > * {
+  opacity: 0.3;
+}
+.filters-activated .active-display {
+  opacity: 1;
+}
+
+.branch-filter-button {
+  stroke-width: 16;
+  stroke-linecap: round;
+  cursor: pointer;
+}
+.branch-filter-button.active-display {
+  stroke-width: 24;
+}
+
+#branch-filter-line {
+  stroke-miterlimit: 10;
+  stroke: #FFFFFF;
+}
+
+#branch-texto-allergio:hover,
+#branch-texto-allergio.active-display,
+#button-filter-branch-texto-allergio  {
   fill: #e74c3c;
   stroke: #e74c3c;
 }
 
-#branch-similares-allergio:hover {
+#branch-similares-allergio:hover,
+#branch-similares-allergio.active-display,
+#button-filter-branch-similares-allergio {
   fill: #1abc9c;
   stroke: #1abc9c;
 }
@@ -59,8 +100,11 @@
   stroke: #e67e22;
 }
 
+#net-central {
+  opacity: 1;
+}
+
 #net-central:hover {
   fill: #FFFFFF;
   stroke: #FFFFFF;
-  opacity: 1;
 }
