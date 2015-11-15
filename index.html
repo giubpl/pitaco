@@ -15,7 +15,7 @@
 </head>
 <body>
   <div class="top-menu">
-    <img class="link-to-initial-page image-display" src="img/logos/logo_01.svg" id="logo-top-menu" />
+    <img class="link-to-initial-page" src="img/logos/logo_01.svg" id="logo-top-menu" />
     <div class="top-buttons-area">
         <form id="topmenu-search-form" class="navbar-left" role="search">
             <input type="text" class="form-control" placeholder="Buscar ">
@@ -31,9 +31,9 @@
         <div id="sidebar-expand-icon"></div>
       </div>
       <div id="sidebar-name-area" class="display-children-inline">
-          <img class="link-to-initial-page image-display" id="sidebar-profile-image" src="img/fulano.png" />
+          <img class="link-to-initial-page" id="sidebar-profile-image" src="img/fulano.png" />
           <ul id="sidebar-profile-info">
-            <li id="sidebar-profile-name">Fulano de tal</li>
+            <li id="sidebar-profile-name"><span class="link-to-initial-page">Fulano de tal</span></li>
             <li><a href="#" id="sidebar-profile-edit">editar perfil</a></li>
           </ul>
       </div>
@@ -97,6 +97,29 @@
         <svg id="pitaco-net-filters" viewBox="0 0 104.9 129.7" enable-background="new 0 0 104.9 129.7">
           	<text transform="matrix(1 0 0 1 45.7684 20.8792)" font-weight="500" font-size="17px">Filtros</text>
             <g id="filter-line-group"></g>
+        </svg>
+
+        <svg id="author-info" viewBox="0 0 262.5 77.5" enable-background="new 0 0 262.5 77.5">
+      		<clipPath id="giulia-profile-path"><circle cx="37.8" cy="42" r="33.3"/></clipPath>
+          <g class="link-to-initial-page" clip-path="url(#giulia-profile-path)">
+            <image xlink:href="img/user_profile.jpg" width="266" height="266" transform="matrix(0.2506 0 0 0.2506 4.4262 8.8552)"></image>
+          </g>
+          <circle fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" cx="37.8" cy="42" r="33.3"/>
+      		<text class="link-to-initial-page" transform="matrix(1 0 0 1 87.1667 25.9593)" fill="#FFFFFF" font-weigth="500" font-size="18">Giulia Bins</text>
+      		<text class="link-to-initial-page" transform="matrix(1 0 0 1 87.1667 44.9593)" fill="#FFFFFF" font-weigth="300" font-size="14">Designer</text>
+      		<a xlink:href="#"><text transform="matrix(1 0 0 1 87.1667 62.9562)" fill="#3A99D8" font-weigth="700" font-size="14">outros projetos</text></a>
+        </svg>
+
+        <svg id="project-info" viewBox="0 0 235.3 68.3" enable-background="new 0 0 235.3 68.3">
+          <g id="button-seguir">
+            <path d="M158.7,62.6h-75c-1.6,0-3-1.3-3-3V42c0-1.7,1.4-3,3-3h75
+        		  c1.6,0,3,1.3,3,3v17.6C161.7,61.2,160.3,62.6,158.7,62.6z"/>
+        	   <text transform="matrix(1 0 0 1 100.7917 55)" fill="#FFFFFF" font-weight="700" font-size="14">Seguir</text>
+          </g>
+          <clipPath id="pitaco-project-path"><circle cx="34" cy="35" r="30"></circle></clipPath>
+          <image x="4" y="5" width="60" height="60" xlink:href="img/central_project_dark.svg" clip-path="url(#pitaco-project-path)"></image>
+        	<circle fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" cx="34" cy="35" r="30"/>
+        	<text transform="matrix(1 0 0 1 78.6667 26.3332)" fill="#FFFFFF" font-weight="700" font-size="24">Projeto Pitaco</text>
         </svg>
       </div>
 

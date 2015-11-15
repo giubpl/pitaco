@@ -338,4 +338,9 @@ $(document).ready(function() {
   drawer.drawPitacoNet();
   drawer.drawFilters();
   drawer.addZoomerBehaviour();
+
+  var buttonSeguir = d3.select("#button-seguir");
+  buttonSeguir.on("click", function() {
+    buttonSeguir.classed("active-display", !buttonSeguir.classed("active-display"));
+  });
 });
