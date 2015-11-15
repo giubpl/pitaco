@@ -1,21 +1,38 @@
 function PitacoDrawerHelper() {
-  this.centralRadius = 37;
+  this.centralRadius = 40;
   this.branchRadius = 8;
-  this.pitacoRadius = 18;
-
+  this.pitacoRadius = 15;
   this.centralProject = {
     cx: 480,
     cy: 425,
-    img: "img/B943C0108560459E.jpg"
+    img: "img/central_project_dark.svg"
   }
 
   this.branches = [
     {
       name: "branch-texto-allergio",
-      cx: 657,
-      cy: 428,
+      cx: 660,
+      cy: 430,
       pitacos:
         [
+          {
+            img: "img/fulano.jpg",
+            cx: 712,
+            cy: 725,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 670,
+            cy: 205,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 726,
+            cy: 160,
+            text: ""
+          },
           {
             img: "img/fulano.jpg",
             cx: 800,
@@ -52,6 +69,36 @@ function PitacoDrawerHelper() {
             cy: 306,
             text: ""
           },
+          {
+            img: "img/fulano.jpg",
+            cx: 861,
+            cy: 241,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 839,
+            cy: 700,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 922,
+            cy: 597,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 883,
+            cy: 680,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 670,
+            cy: 697,
+            text: ""
+          },
         ]
     },
     {
@@ -64,6 +111,12 @@ function PitacoDrawerHelper() {
             img: "img/fulano.jpg",
             cx: 351,
             cy: 218,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 24,
+            cy: 551,
             text: ""
           },
           {
@@ -136,6 +189,12 @@ function PitacoDrawerHelper() {
             img: "img/fulano.jpg",
             cx: 310,
             cy: 660,
+            text: ""
+          },
+          {
+            img: "img/fulano.jpg",
+            cx: 326,
+            cy: 596,
             text: ""
           },
         ]
@@ -215,7 +274,7 @@ PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {
       .on("dblclick.zoom", null)
       //FIXME: this is a hack! Remove when development is finished
       .on("dblclick", function() {
-          alert("cx=" + (d3.event.x-260) + " cy=" + (d3.event.y+15));
+          alert("cx=" + (d3.event.x-260-105) + " cy=" + (d3.event.y+15));
       });
 }
 
