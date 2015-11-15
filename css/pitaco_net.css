@@ -3,6 +3,19 @@
   height: 100%;
 }
 
+#button-dar-pitaco {
+  position:fixed;
+  bottom: 50px;
+  right: 30px;
+  height: 35px;
+  opacity: 0.95;
+}
+
+#button-dar-pitaco:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
 #pitaco-tree {
   stroke-width: 2;
   stroke-miterlimit: 10;
