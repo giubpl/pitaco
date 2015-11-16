@@ -14,4 +14,7 @@ $(document).ready(function() {
     $('#page-tab-activator a[href="#initial-page"]').tab("show");
   });
 
+  var randomNumber = 1 + ((Math.random() * 4) | 0); //numero aleatorio entre 1 (inclusive) e 4 (inclusive)
+  $("#logo-top-menu").attr("src", "img/logos/logo_0" + randomNumber + ".svg");
+
 });
