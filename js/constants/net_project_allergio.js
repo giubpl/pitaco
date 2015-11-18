@@ -10,7 +10,7 @@
       },
       branches : [
         {
-          name: "branch-similares-allergio",
+          id: "branch-similares-allergio",
           filterText: "Positivos",
           color: "#00FF00",
           cx: 310,
@@ -80,7 +80,7 @@
             ]
         },
         {
-          name: "branch-texto-allergio",
+          id: "branch-texto-allergio",
           filterText: "Negativos",
           color: "#FF0000",
           cx: 660,
@@ -138,7 +138,7 @@
             ]
         },
         {
-          name: "branch-icons-allergio",
+          id: "branch-icons-allergio",
           filterText: "Não sei",
           color: "#e67e22",
           cx: 513,
@@ -154,7 +154,7 @@
             ]
         },
 				{
-          name: "branch-seila-allergio",
+          id: "branch-seila-allergio",
           filterText: "Vou pensar",
           color: "#FFFF00",
           cx: 513,

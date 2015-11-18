@@ -10,7 +10,7 @@
       },
       branches : [
         {
-          name: "branch-similares-allergio",
+          id: "branch-similares-allergio",
           filterText: "Positivos",
           color: "#1abc9c",
           cx: 310,
@@ -110,7 +110,7 @@
             ]
         },
         {
-          name: "branch-texto-allergio",
+          id: "branch-texto-allergio",
           filterText: "Negativos",
           color: "#e74c3c",
           cx: 660,
@@ -204,7 +204,7 @@
             ]
         },
         {
-          name: "branch-icons-allergio",
+          id: "branch-icons-allergio",
           filterText: "Não sei",
           color: "#e67e22",
           cx: 513,
