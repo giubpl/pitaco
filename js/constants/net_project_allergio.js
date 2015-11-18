@@ -5,7 +5,8 @@
       centralProject : {
         cx: 480,
         cy: 425,
-        img: "img/B943C0108560459E.jpg"
+        img: "img/B943C0108560459E.jpg",
+				name: "Projeto Allergio"
       },
       branches : [
         {

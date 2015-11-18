@@ -5,7 +5,8 @@
       centralProject : {
         cx: 480,
         cy: 425,
-        img: "img/central_project_dark.svg"
+        img: "img/central_project_dark.svg",
+				name: "Projeto Pitaco"
       },
       branches : [
         {

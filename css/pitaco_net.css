@@ -17,12 +17,6 @@
   cursor: default;
 }
 
-#project-info {
-  position:fixed;
-  height: 60px;
-  cursor: default;
-}
-
 #author-info {
   position:fixed;
   height: 70px;

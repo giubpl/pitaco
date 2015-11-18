@@ -120,7 +120,10 @@ PitacoDrawerHelper.prototype.drawPitacoNet = function() {
   }.bind(this));
 
   pitacoTree.append("style").text(styles.join(""));
+
   this.drawCircleWithImage(pitacoTree, this.centralProject, this.centralRadius).attr("id", "net-central");
+  d3.select("#project-info-image").attr("xlink:href", this.centralProject.img);
+  d3.select("#project-info-name").text(this.centralProject.name);
 }
 
 PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {
