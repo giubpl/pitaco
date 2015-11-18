@@ -58,14 +58,6 @@
   fill: #0e7c21;
 }
 
-#pitaco-net-filters {
-  position:fixed;
-  top: 80px;
-  right: 20px;
-  width: 100px;
-  height: 180px;
-}
-
 #pitaco-tree {
   stroke-width: 2;
   stroke-miterlimit: 10;
@@ -102,37 +94,6 @@
 #branch-filter-line {
   stroke-miterlimit: 10;
   stroke: #FFFFFF;
-}
-
-#branch-texto-allergio:hover,
-#branch-texto-allergio.active-display,
-#button-filter-branch-texto-allergio  {
-  fill: #e74c3c;
-  stroke: #e74c3c;
-}
-
-#branch-similares-allergio:hover,
-#branch-similares-allergio.active-display,
-#button-filter-branch-similares-allergio {
-  fill: #1abc9c;
-  stroke: #1abc9c;
-}
-
-#branch-icons-allergio:hover,
-#branch-icons-allergio.active-display,
-#button-filter-branch-icons-allergio  {
-  fill: #e67e22;
-  stroke: #e67e22;
-}
-
-#branch-layer-6:hover {
-  fill: #e74c3c;
-  stroke: #e74c3c;
-}
-
-#branch-layer-7:hover {
-  fill: #e67e22;
-  stroke: #e67e22;
 }
 
 #net-central {

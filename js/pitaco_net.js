@@ -1,227 +1,13 @@
-function PitacoDrawerHelper() {
+function PitacoDrawerHelper(projectName) {
   this.centralRadius = 40;
   this.branchRadius = 8;
   this.pitacoRadius = 15;
-  this.filterButtonsCx = 88;
-  this.filterButtonsCy = 57;
+  this.filterMarginX = 30;
+  this.filterMarginY = 25;
   this.filterButtonsIncreaseY = 50;
   this.filterTextDistanceX = 25;
-  this.centralProject = {
-    cx: 480,
-    cy: 425,
-    img: "img/central_project_dark.svg"
-  }
-
-  this.branches = [
-    {
-      name: "branch-similares-allergio",
-      filterText: "Positivos",
-      cx: 310,
-      cy: 428,
-      pitacos:
-        [
-          {
-            img: "img/fulano.jpg",
-            cx: 351,
-            cy: 218,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 24,
-            cy: 551,
-            text: ""
-          },
-          {
-            img: "img/users_pitaqueiros/02.jpg",
-            cx: 271,
-            cy: 175,
-            text: "Acho o projeto sensasional! Um espaço para troca de pitacos é o que todo designer precisa."
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 195,
-            cy: 285,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 140,
-            cy: 340,
-            text: ""
-          },
-          {
-            img: "img/users_pitaqueiros/05.jpg",
-            cx: 120,
-            cy: 440,
-            text: "Amei este projeto! Acho que ele é super útil inclusive para a área de direito, no qual várias pessoas precisam compartilhar textos e escrever textos em conjunto"
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 215,
-            cy: 546,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 200,
-            cy: 200,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 103,
-            cy: 248,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 315,
-            cy: 115,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 50,
-            cy: 360,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 94,
-            cy: 560,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 245,
-            cy: 656,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 310,
-            cy: 660,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 326,
-            cy: 596,
-            text: ""
-          },
-        ]
-    },
-    {
-      name: "branch-texto-allergio",
-      filterText: "Negativos",
-      cx: 660,
-      cy: 430,
-      pitacos:
-        [
-          {
-            img: "img/fulano.jpg",
-            cx: 722,
-            cy: 695,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 670,
-            cy: 205,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 726,
-            cy: 160,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 800,
-            cy: 374,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 827,
-            cy: 561,
-            text: ""
-          },
-          {
-            img: "img/users_pitaqueiros/01.jpg",
-            cx: 807,
-            cy: 458,
-            text: "Acho que o visual poderia ser melhor. Estava pensando que poderia haver algum tipo de feed dos pitacos mais recentes, como uma forma diferenciada do usuário visualizar as informações relevantes a ele."
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 743,
-            cy: 607,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 844,
-            cy: 413,
-            text: ""
-          },
-          {
-            img: "img/users_pitaqueiros/03.jpg",
-            cx: 723,
-            cy: 306,
-            text: "Gostei bastante do projeto, mas ainda existem muitas funcionalidades que deveriam ser implementadas. Uma funcionalidade que acharia interessante seria um chat para que os usuários se comunicassem para combinar detalhes do projeto"
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 861,
-            cy: 241,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 839,
-            cy: 700,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 922,
-            cy: 597,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 883,
-            cy: 680,
-            text: ""
-          },
-          {
-            img: "img/fulano.jpg",
-            cx: 670,
-            cy: 697,
-            text: ""
-          },
-        ]
-    },
-    {
-      name: "branch-icons-allergio",
-      filterText: "Não sei",
-      cx: 513,
-      cy: 302,
-      pitacos:
-        [
-          {
-            img: "img/fulano.jpg",
-            cx: 551,
-            cy: 218,
-            text: ""
-          },
-        ]
-    }
-  ];
-
+  this.centralProject = window.projectNet[projectName].centralProject;
+  this.branches = window.projectNet[projectName].branches;
   this.idCounter = 0;
   this.activeBranchName = "";
 }
@@ -276,18 +62,28 @@ PitacoDrawerHelper.prototype.switchActiveBranch = function(newActiveBranchName) 
 }
 
 PitacoDrawerHelper.prototype.drawFilters = function() {
-  var filtersArea = d3.select("#filter-line-group");
+  var filtersArea = d3.select("#pitaco-net-filters");
   filtersArea.html("");
 
-  var cx = this.filterButtonsCx;
-  var cy = this.filterButtonsCy;
-  var lastcy = this.filterButtonsCy + (this.branches.length-1) * this.filterButtonsIncreaseY;
-  this.drawLine(filtersArea, cx, cy, cx, lastcy).attr("id", "branch-filter-line");
+  var cx = 1000 - this.filterMarginX, cy = this.filterMarginY;
+  filtersArea.append("text")
+            .attr("font-weight", 500)
+            .attr("font-size", "17px")
+            .attr("x", cx + this.branchRadius)
+            .attr("y", cy)
+            .attr("text-anchor", "end")
+            .attr("alignment-baseline", "text-before-edge")
+            .text("Filtros");
+
+  var lastcy = cy + (this.branches.length) * this.filterButtonsIncreaseY;
+  this.drawLine(filtersArea, cx, cy + this.filterButtonsIncreaseY, cx, lastcy).attr("id", "branch-filter-line");
+
   this.branches.forEach(function drawFilter(branchInfo, index) {
-    cy = this.filterButtonsCy + index * this.filterButtonsIncreaseY;
+    cy += this.filterButtonsIncreaseY;
     this.drawLine(filtersArea, cx, cy, cx, cy)
             .attr("class", "branch-filter-button")
             .attr("id", "button-filter-"+branchInfo.name)
+            .attr("stroke", branchInfo.color)
             .on("click", function() {
                 this.switchActiveBranch(branchInfo.name)
             }.bind(this));
@@ -306,11 +102,15 @@ PitacoDrawerHelper.prototype.drawPitacoNet = function() {
   var pitacoTree = d3.select("#pitaco-tree");
   pitacoTree.html("");
 
+  var styles = [];
   this.branches.forEach(function drawBranch(branchInfo) {
 
     var branch = pitacoTree.append("g").attr("id", branchInfo.name);
     this.drawSimpleCircle(branch, branchInfo, this.branchRadius);
     this.drawLine(branch, this.centralProject.cx, this.centralProject.cy, branchInfo.cx, branchInfo.cy);
+
+    styles.push("#" + branchInfo.name + ":hover, #" + branchInfo.name + ".active-display");
+    styles.push("{fill:" + branchInfo.color + "; stroke:" + branchInfo.color + ";}");
 
     branchInfo.pitacos.forEach(function drawPitaco(pitacoInfo) {
       this.drawLine(branch, branchInfo.cx, branchInfo.cy, pitacoInfo.cx, pitacoInfo.cy);
@@ -319,6 +119,7 @@ PitacoDrawerHelper.prototype.drawPitacoNet = function() {
 
   }.bind(this));
 
+  pitacoTree.append("style").text(styles.join(""));
   this.drawCircleWithImage(pitacoTree, this.centralProject, this.centralRadius).attr("id", "net-central");
 }
 
@@ -349,7 +150,7 @@ PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {
 }
 
 $(document).ready(function() {
-  var drawer = new PitacoDrawerHelper();
+  var drawer = new PitacoDrawerHelper("pitaco");
   drawer.drawPitacoNet();
   drawer.drawFilters();
   drawer.addZoomerBehaviour();
