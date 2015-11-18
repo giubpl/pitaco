@@ -69,21 +69,21 @@
     <div id="page-container" class="tab-content">
 
       <div id="initial-page" class="tab-pane fade">
-        <img class="card" src="img/card01.png"/>
-        <img class="card" src="img/card02.png"/>
-        <img class="card" src="img/card03.png"/>
-        <img class="card" src="img/card04.png"/>
-        <img class="card" src="img/card05.png"/>
-        <img class="card" src="img/card06.png"/>
-        <img class="card" src="img/card07.png"/>
-        <img class="card" src="img/card08.png"/>
-        <img class="card" src="img/card09.png"/>
+        <img class="card" src="img/card01.png" data-project="pitaco" />
+        <img class="card" src="img/card02.png" data-project="allergio"/>
+        <img class="card" src="img/card03.png" data-project="pitaco"/>
+        <img class="card" src="img/card04.png" data-project="allergio"/>
+        <img class="card" src="img/card05.png" data-project="pitaco"/>
+        <img class="card" src="img/card06.png" data-project="allergio"/>
+        <img class="card" src="img/card07.png" data-project="pitaco"/>
+        <img class="card" src="img/card08.png" data-project="allergio"/>
+        <img class="card" src="img/card09.png" data-project="pitaco"/>
       </div>
 
       <div id="pitaco-net" class="tab-pane fade">
 
         <svg width="100%" height="100%">
-          
+
           <svg id="pitaco-net-svg" width="100%" height="100%">
             <rect width="100%" height="100%" style="fill:none; pointer-events:all"></rect>
             <g id="pitaco-net-zoom-group" stroke="white" stroke-width="1">
@@ -109,6 +109,20 @@
             </svg>
           </svg>
 
+          <svg width="240" height="100%" x="20" y="-20">
+            <svg id="author-info" height="100%" width="100%" preserveAspectRatio="xMinYMax meet"
+              viewBox="0 0 262.5 77.5" >
+              <clipPath id="project-author-image-path"><circle cx="37.8" cy="42" r="33.3"/></clipPath>
+              <g class="link-to-initial-page" clip-path="url(#project-author-image-path)">
+                <image id="project-author-image" width="266" height="266" transform="matrix(0.2506 0 0 0.2506 4.4262 8.8552)"></image>
+              </g>
+              <circle fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" cx="37.8" cy="42" r="33.3"/>
+              <text id="project-author-name" class="link-to-initial-page" transform="matrix(1 0 0 1 87.1667 25.9593)" fill="#FFFFFF" font-weigth="500" font-size="18"></text>
+              <text id="project-author-area" class="link-to-initial-page" transform="matrix(1 0 0 1 87.1667 44.9593)" fill="#FFFFFF" font-weigth="300" font-size="14"></text>
+              <a xlink:href="#"><text transform="matrix(1 0 0 1 87.1667 62.9562)" fill="#3A99D8" font-weigth="700" font-size="14">outros projetos</text></a>
+            </svg>
+          </svg>
+
         </svg>
 
         <svg id="button-dar-pitaco" viewBox="0 0 113 35" enable-background="new 0 0 113 35">
@@ -116,16 +130,6 @@
           <text transform="matrix(1 0 0 1 20.125 21.5)" font-weight="700" font-size="15px">Dar pitaco</text>
         </svg>
 
-        <svg id="author-info" viewBox="0 0 262.5 77.5" enable-background="new 0 0 262.5 77.5">
-      		<clipPath id="giulia-profile-path"><circle cx="37.8" cy="42" r="33.3"/></clipPath>
-          <g class="link-to-initial-page" clip-path="url(#giulia-profile-path)">
-            <image xlink:href="img/user_profile.jpg" width="266" height="266" transform="matrix(0.2506 0 0 0.2506 4.4262 8.8552)"></image>
-          </g>
-          <circle fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" cx="37.8" cy="42" r="33.3"/>
-      		<text class="link-to-initial-page" transform="matrix(1 0 0 1 87.1667 25.9593)" fill="#FFFFFF" font-weigth="500" font-size="18">Giulia Bins</text>
-      		<text class="link-to-initial-page" transform="matrix(1 0 0 1 87.1667 44.9593)" fill="#FFFFFF" font-weigth="300" font-size="14">Designer</text>
-      		<a xlink:href="#"><text transform="matrix(1 0 0 1 87.1667 62.9562)" fill="#3A99D8" font-weigth="700" font-size="14">outros projetos</text></a>
-        </svg>
       </div>
 
     </div>

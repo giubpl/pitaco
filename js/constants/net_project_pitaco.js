@@ -6,7 +6,12 @@
         cx: 480,
         cy: 425,
         img: "img/central_project_dark.svg",
-				name: "Projeto Pitaco"
+				name: "Projeto Pitaco",
+				author: {
+					name: "Giulia Bins",
+					area: "Designer",
+					img: "img/user_profile.jpg"
+				}
       },
       branches : [
         {

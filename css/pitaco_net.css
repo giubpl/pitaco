@@ -17,11 +17,6 @@
   cursor: default;
 }
 
-#author-info {
-  position:fixed;
-  height: 70px;
-}
-
 #button-dar-pitaco {
   position:fixed;
   bottom: 30px;

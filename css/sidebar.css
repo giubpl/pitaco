@@ -16,18 +16,12 @@
 .sidebar-container-smaller #page-container {
   left: 80px;
 }
-.sidebar-container-smaller #author-info {
-  left: 100px;
-}
 
 .sidebar-container-bigger #sidebar-container {
   width: 200px;
 }
 .sidebar-container-bigger #page-container {
   left: 200px;
-}
-.sidebar-container-bigger #author-info {
-  left: 220px;
 }
 
 .sidebar-container-smaller #sidebar-profile-info,

@@ -98,7 +98,7 @@ PitacoDrawerHelper.prototype.drawFilters = function() {
   }.bind(this));
 }
 
-PitacoDrawerHelper.prototype.drawPitacoNet = function() {
+PitacoDrawerHelper.prototype.drawPitacoTree = function() {
   var pitacoTree = d3.select("#pitaco-tree");
   pitacoTree.html("");
 
@@ -122,8 +122,17 @@ PitacoDrawerHelper.prototype.drawPitacoNet = function() {
   pitacoTree.append("style").text(styles.join(""));
 
   this.drawCircleWithImage(pitacoTree, this.centralProject, this.centralRadius).attr("id", "net-central");
+}
+
+PitacoDrawerHelper.prototype.drawPitacoNet = function() {
+  this.drawPitacoTree();
+  this.drawFilters();
+
   d3.select("#project-info-image").attr("xlink:href", this.centralProject.img);
   d3.select("#project-info-name").text(this.centralProject.name);
+  d3.select("#project-author-image").attr("xlink:href", this.centralProject.author.img);
+  d3.select("#project-author-name").text(this.centralProject.author.name);
+  d3.select("#project-author-area").text(this.centralProject.author.area);
 }
 
 PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {
@@ -146,7 +155,6 @@ PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {
 $(document).ready(function() {
   var drawer = new PitacoDrawerHelper("pitaco");
   drawer.drawPitacoNet();
-  drawer.drawFilters();
   drawer.addZoomerBehaviour();
 
   var buttonSeguir = d3.select("#button-seguir");

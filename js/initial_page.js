@@ -1,11 +1,8 @@
 $(document).ready(function() {
 
   $('#initial-page img').click(function() {
-    /*
-    var drawer = new PitacoDrawerHelper();
-    drawer.centralProject.img = $(this).attr("src");
+    var drawer = new PitacoDrawerHelper($(this).data("project"));
     drawer.drawPitacoNet();
-    */
     $('#page-tab-activator a[href="#pitaco-net"]').tab("show");
   });
 
