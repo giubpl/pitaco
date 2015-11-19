@@ -17,13 +17,6 @@
   cursor: default;
 }
 
-#button-dar-pitaco {
-  position:fixed;
-  bottom: 30px;
-  right: 20px;
-  height: 35px;
-}
-
 #button-dar-pitaco,
 #button-seguir {
   opacity: 0.9;
