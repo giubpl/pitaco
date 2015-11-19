@@ -114,7 +114,10 @@ PitacoDrawerHelper.prototype.drawPitacoTree = function() {
 
     branchInfo.pitacos.forEach(function drawPitaco(pitacoInfo) {
       this.drawLine(branch, branchInfo.cx, branchInfo.cy, pitacoInfo.cx, pitacoInfo.cy);
-      this.drawCircleWithImage(branch, pitacoInfo, this.pitacoRadius).attr("class", "pitaco-circle");
+      this.drawCircleWithImage(branch, pitacoInfo, this.pitacoRadius).attr("class", "pitaco-circle")
+            .on("click", function() {
+              alert("Vou abrir um modal com: " + pitacoInfo.text);
+            });
     }.bind(this));
 
   }.bind(this));
@@ -124,15 +127,27 @@ PitacoDrawerHelper.prototype.drawPitacoTree = function() {
   this.drawCircleWithImage(pitacoTree, this.centralProject, this.centralRadius).attr("id", "net-central");
 }
 
-PitacoDrawerHelper.prototype.drawPitacoNet = function() {
-  this.drawPitacoTree();
-  this.drawFilters();
-
+PitacoDrawerHelper.prototype.updateProjectInfo = function() {
   d3.select("#project-info-image").attr("xlink:href", this.centralProject.img);
   d3.select("#project-info-name").text(this.centralProject.name);
+
+  var buttonSeguir = d3.select("#button-seguir");
+  buttonSeguir.on("click", function() {
+    buttonSeguir.classed("active-display", !buttonSeguir.classed("active-display"));
+  });
+}
+
+PitacoDrawerHelper.prototype.updateProjectAuthor = function() {
   d3.select("#project-author-image").attr("xlink:href", this.centralProject.author.img);
   d3.select("#project-author-name").text(this.centralProject.author.name);
   d3.select("#project-author-area").text(this.centralProject.author.area);
+}
+
+PitacoDrawerHelper.prototype.drawPitacoNet = function() {
+  this.drawPitacoTree();
+  this.drawFilters();
+  this.updateProjectInfo();
+  this.updateProjectAuthor();
 }
 
 PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {
@@ -156,9 +171,4 @@ $(document).ready(function() {
   var drawer = new PitacoDrawerHelper("pitaco");
   drawer.drawPitacoNet();
   drawer.addZoomerBehaviour();
-
-  var buttonSeguir = d3.select("#button-seguir");
-  buttonSeguir.on("click", function() {
-    buttonSeguir.classed("active-display", !buttonSeguir.classed("active-display"));
-  });
 });
