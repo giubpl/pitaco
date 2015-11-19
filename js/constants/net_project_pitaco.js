@@ -38,7 +38,12 @@
                 img: "img/users_pitaqueiros/02.jpg",
                 cx: 271,
                 cy: 175,
-                text: "Acho o projeto sensasional! Um espaço para troca de pitacos é o que todo designer precisa."
+                text: "Acho o projeto sensasional! Um espaço para troca de pitacos é o que todo designer precisa.",
+								author: {
+									name: "João da Silva",
+									area: "Designer",
+									img: "img/users_pitaqueiros/02.jpg"
+								}
               },
               {
                 img: "img/fulano.jpg",
@@ -56,7 +61,12 @@
                 img: "img/users_pitaqueiros/05.jpg",
                 cx: 120,
                 cy: 440,
-                text: "Amei este projeto! Acho que ele é super útil inclusive para a área de direito, no qual várias pessoas precisam compartilhar textos e escrever textos em conjunto"
+                text: "Amei este projeto! Acho que ele é super útil inclusive para a área de direito, no qual várias pessoas precisam compartilhar textos e escrever textos em conjunto",
+								author: {
+									name: "Amanda Muniz",
+									area: "Advogada",
+									img: "img/users_pitaqueiros/05.jpg"
+								}
               },
               {
                 img: "img/fulano.jpg",
@@ -156,7 +166,12 @@
                 img: "img/users_pitaqueiros/01.jpg",
                 cx: 807,
                 cy: 458,
-                text: "Acho que o visual poderia ser melhor. Estava pensando que poderia haver algum tipo de feed dos pitacos mais recentes, como uma forma diferenciada do usuário visualizar as informações relevantes a ele."
+                text: "Acho que o visual poderia ser melhor. Estava pensando que poderia haver algum tipo de feed dos pitacos mais recentes, como uma forma diferenciada do usuário visualizar as informações relevantes a ele.",
+								author: {
+									name: "Lucas Abdack",
+									area: "Designer",
+									img: "img/users_pitaqueiros/01.jpg"
+								}
               },
               {
                 img: "img/fulano.jpg",
@@ -174,7 +189,12 @@
                 img: "img/users_pitaqueiros/03.jpg",
                 cx: 723,
                 cy: 306,
-                text: "Gostei bastante do projeto, mas ainda existem muitas funcionalidades que deveriam ser implementadas. Uma funcionalidade que acharia interessante seria um chat para que os usuários se comunicassem para combinar detalhes do projeto"
+                text: "Gostei bastante do projeto, mas ainda existem muitas funcionalidades que deveriam ser implementadas. Uma funcionalidade que acharia interessante seria um chat para que os usuários se comunicassem para combinar detalhes do projeto",
+								author: {
+									name: "Fulana de tal",
+									area: "Designer",
+									img: "img/users_pitaqueiros/03.jpg"
+								}
               },
               {
                 img: "img/fulano.jpg",

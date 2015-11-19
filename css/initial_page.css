@@ -22,3 +22,19 @@
 .card:hover {
   opacity: 0.6;
 }
+
+#modal-view-pitaco {
+  font-family: 'Roboto';
+}
+
+#modal-view-pitaco .modal-dialog {
+  width: 400px;
+}
+
+#modal-view-pitaco .modal-header {
+  background-color: #51515e;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}

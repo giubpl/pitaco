@@ -116,7 +116,17 @@ PitacoDrawerHelper.prototype.drawPitacoTree = function() {
       this.drawLine(branch, branchInfo.cx, branchInfo.cy, pitacoInfo.cx, pitacoInfo.cy);
       this.drawCircleWithImage(branch, pitacoInfo, this.pitacoRadius).attr("class", "pitaco-circle")
             .on("click", function() {
-              alert("Vou abrir um modal com: " + pitacoInfo.text);
+                if(!pitacoInfo.author) return;
+
+                var modalElement = $("#modal-view-pitaco");
+                modalElement.find(".modal-body").text(pitacoInfo.text);
+                d3.select("#pitaco-view-author-image").attr("xlink:href", pitacoInfo.author.img);
+                d3.select("#pitaco-view-author-name").text(pitacoInfo.author.name);
+                d3.select("#pitaco-view-author-area").text(pitacoInfo.author.area);
+                modalElement.modal({
+                  show: true,
+                  backdrop: "static"
+                });
             });
     }.bind(this));
 
@@ -130,10 +140,9 @@ PitacoDrawerHelper.prototype.drawPitacoTree = function() {
 PitacoDrawerHelper.prototype.updateProjectInfo = function() {
   d3.select("#project-info-image").attr("xlink:href", this.centralProject.img);
   d3.select("#project-info-name").text(this.centralProject.name);
-
-  var buttonSeguir = d3.select("#button-seguir");
-  buttonSeguir.on("click", function() {
-    buttonSeguir.classed("active-display", !buttonSeguir.classed("active-display"));
+  d3.select("#button-seguir").on("click", function() {
+    var self = d3.select(this);
+    self.classed("active-display", !self.classed("active-display"));
   });
 }
 
