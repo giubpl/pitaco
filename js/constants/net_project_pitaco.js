@@ -171,7 +171,31 @@
 									name: "Lucas Abdack",
 									area: "Designer",
 									img: "img/users_pitaqueiros/01.jpg"
-								}
+								},
+								pitacos: [
+									{
+		                img: "img/users_pitaqueiros/02.jpg",
+		                cx: 853,
+		                cy: 506,
+		                text: "Concordo 100%",
+										author: {
+											name: "João da Silva",
+											area: "Designer",
+											img: "img/users_pitaqueiros/02.jpg"
+										}
+		              },
+									{
+		                img: "img/users_pitaqueiros/05.jpg",
+		                cx: 927,
+										cy: 433,
+		                text: "Discordo 100%",
+										author: {
+											name: "Amanda Muniz",
+											area: "Advogada",
+											img: "img/users_pitaqueiros/05.jpg"
+										}
+		              },
+								]
               },
               {
                 img: "img/fulano.jpg",

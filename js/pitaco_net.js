@@ -98,42 +98,52 @@ PitacoDrawerHelper.prototype.drawFilters = function() {
   }.bind(this));
 }
 
+PitacoDrawerHelper.prototype.openPitacoDetailView = function(pitacoInfo) {
+  if(!pitacoInfo.author) return;
+
+  var modalElement = $("#modal-view-pitaco");
+  modalElement.find(".modal-body").text(pitacoInfo.text);
+  d3.select("#pitaco-view-author-image").attr("xlink:href", pitacoInfo.author.img);
+  d3.select("#pitaco-view-author-name").text(pitacoInfo.author.name);
+  d3.select("#pitaco-view-author-area").text(pitacoInfo.author.area);
+  modalElement.modal({
+    show: true,
+    backdrop: "static"
+  });
+}
+
+PitacoDrawerHelper.prototype.drawPitacos = function(branch, pitacos, fatherCx, fatherCy, drawJustLines) {
+  if(!pitacos) return;
+
+  pitacos.forEach(function(pitacoInfo) {
+    this.drawPitacos(branch, pitacoInfo.pitacos, pitacoInfo.cx, pitacoInfo.cy, drawJustLines);
+    if(drawJustLines)
+      this.drawLine(branch, fatherCx, fatherCy, pitacoInfo.cx, pitacoInfo.cy);
+    else
+      this.drawCircleWithImage(branch, pitacoInfo, this.pitacoRadius)
+          .attr("class", "pitaco-circle")
+          .on("click", function() { this.openPitacoDetailView(pitacoInfo); }.bind(this));
+  }.bind(this))
+}
+
+PitacoDrawerHelper.prototype.drawBranch = function(pitacoTree, branchInfo, styles) {
+  var branch = pitacoTree.append("g").attr("id", branchInfo.id);
+  this.drawLine(branch, this.centralProject.cx, this.centralProject.cy, branchInfo.cx, branchInfo.cy);
+  this.drawPitacos(branch, branchInfo.pitacos, branchInfo.cx, branchInfo.cy, true);
+  this.drawSimpleCircle(branch, branchInfo, this.branchRadius);
+  this.drawPitacos(branch, branchInfo.pitacos, branchInfo.cx, branchInfo.cy, false);
+  styles.push("#" + branchInfo.id + ":hover, #" + branchInfo.id + ".active-display");
+  styles.push("{fill:" + branchInfo.color + "; stroke:" + branchInfo.color + ";}");
+}
+
 PitacoDrawerHelper.prototype.drawPitacoTree = function() {
   var pitacoTree = d3.select("#pitaco-tree");
   pitacoTree.html("");
-
   var styles = [];
-  this.branches.forEach(function drawBranch(branchInfo) {
-
-    var branch = pitacoTree.append("g").attr("id", branchInfo.id);
-    this.drawSimpleCircle(branch, branchInfo, this.branchRadius);
-    this.drawLine(branch, this.centralProject.cx, this.centralProject.cy, branchInfo.cx, branchInfo.cy);
-
-    styles.push("#" + branchInfo.id + ":hover, #" + branchInfo.id + ".active-display");
-    styles.push("{fill:" + branchInfo.color + "; stroke:" + branchInfo.color + ";}");
-
-    branchInfo.pitacos.forEach(function drawPitaco(pitacoInfo) {
-      this.drawLine(branch, branchInfo.cx, branchInfo.cy, pitacoInfo.cx, pitacoInfo.cy);
-      this.drawCircleWithImage(branch, pitacoInfo, this.pitacoRadius).attr("class", "pitaco-circle")
-            .on("click", function() {
-                if(!pitacoInfo.author) return;
-
-                var modalElement = $("#modal-view-pitaco");
-                modalElement.find(".modal-body").text(pitacoInfo.text);
-                d3.select("#pitaco-view-author-image").attr("xlink:href", pitacoInfo.author.img);
-                d3.select("#pitaco-view-author-name").text(pitacoInfo.author.name);
-                d3.select("#pitaco-view-author-area").text(pitacoInfo.author.area);
-                modalElement.modal({
-                  show: true,
-                  backdrop: "static"
-                });
-            });
-    }.bind(this));
-
+  this.branches.forEach(function(branchInfo) {
+    this.drawBranch(pitacoTree, branchInfo, styles);
   }.bind(this));
-
   pitacoTree.append("style").text(styles.join(""));
-
   this.drawCircleWithImage(pitacoTree, this.centralProject, this.centralRadius).attr("id", "net-central");
 }
 
