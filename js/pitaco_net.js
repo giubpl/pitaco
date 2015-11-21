@@ -179,6 +179,8 @@ PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {
       .on("dblclick.zoom", null)
       //FIXME: this is a hack! Remove when development is finished
       .on("dblclick", function() {
+          if(!d3.event.shiftKey)
+            return;
           var pt = svg.node().createSVGPoint();
           pt.x = d3.event.x; pt.y = d3.event.y;
           pt = pt.matrixTransform(svg.node().getScreenCTM().inverse());
