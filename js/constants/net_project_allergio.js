@@ -6,7 +6,7 @@
         cx: 480,
         cy: 425,
         img: "img/B943C0108560459E.jpg",
-				name: "Projeto Allergio",
+				name: "Allergio app",
 				author: {
 					name: "Jonathan Carvalhosa",
 					area: "Programador",
@@ -16,58 +16,58 @@
       branches : [
         {
           id: "branch-similares-allergio",
-          filterText: "Positivos",
-          color: "#00FF00",
-          cx: 310,
-          cy: 428,
+          filterText: "Similares",
+          color: "#3498db",
+          cx: 190,
+          cy: 405,
           pitacos:
             [
               {
-                img: "img/fulano.jpg",
-                cx: 351,
-                cy: 218,
+                img: "img/joao.jpg",
+                cx: 227,
+                cy: 145,
                 text: ""
               },
+							{
+								img: "img/fulano.jpg",
+								cx: 170,
+								cy: 155,
+								text: ""
+							},
+							{
+                img: "img/users_pitaqueiros/05.jpg",
+                cx: 126,
+                cy: 196,
+                text: "Amei este projeto! Acho que ele é super útil inclusive para a área de direito, no qual várias pessoas precisam compartilhar textos e escrever textos em conjunto"
+              },
+							{
+								img: "img/joao.jpg",
+								cx: 73,
+								cy: 261,
+								text: ""
+							},
+							{
+								img: "img/joao.jpg",
+								cx: 22,
+								cy: 303,
+								text: ""
+							},
               {
-                img: "img/fulano.jpg",
+                img: "img/joao.jpg",
                 cx: 24,
                 cy: 551,
                 text: ""
               },
               {
                 img: "img/users_pitaqueiros/02.jpg",
-                cx: 271,
-                cy: 175,
+                cx: 20,
+                cy: 406,
                 text: "Acho o projeto sensasional! Um espaço para troca de pitacos é o que todo designer precisa."
-              },
-              {
-                img: "img/fulano.jpg",
-                cx: 195,
-                cy: 285,
-                text: ""
-              },
-              {
-                img: "img/fulano.jpg",
-                cx: 140,
-                cy: 340,
-                text: ""
-              },
-              {
-                img: "img/users_pitaqueiros/05.jpg",
-                cx: 120,
-                cy: 440,
-                text: "Amei este projeto! Acho que ele é super útil inclusive para a área de direito, no qual várias pessoas precisam compartilhar textos e escrever textos em conjunto"
               },
               {
                 img: "img/fulano.jpg",
                 cx: 215,
                 cy: 546,
-                text: ""
-              },
-              {
-                img: "img/fulano.jpg",
-                cx: 315,
-                cy: 115,
                 text: ""
               },
               {
@@ -78,16 +78,16 @@
               },
               {
                 img: "img/fulano.jpg",
-                cx: 326,
-                cy: 596,
+                cx: 164,
+                cy: 566,
                 text: ""
               },
             ]
         },
         {
           id: "branch-texto-allergio",
-          filterText: "Negativos",
-          color: "#FF0000",
+          filterText: "Imagens",
+          color: "#2ecb72",
           cx: 660,
           cy: 430,
           pitacos:
@@ -144,8 +144,8 @@
         },
         {
           id: "branch-icons-allergio",
-          filterText: "Não sei",
-          color: "#e67e22",
+          filterText: "Teoria - nutrição",
+          color: "#f1c40f",
           cx: 513,
           cy: 302,
           pitacos:
@@ -160,8 +160,8 @@
         },
 				{
           id: "branch-seila-allergio",
-          filterText: "Vou pensar",
-          color: "#FFFF00",
+          filterText: "Tipos de alergia",
+          color: "#e74c3c",
           cx: 513,
           cy: 552,
           pitacos:

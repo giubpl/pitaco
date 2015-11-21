@@ -252,22 +252,6 @@
               },
             ]
         },
-        {
-          id: "branch-icons-allergio",
-          filterText: "Não sei",
-          color: "#e67e22",
-          cx: 513,
-          cy: 302,
-          pitacos:
-            [
-              {
-                img: "img/fulano.jpg",
-                cx: 551,
-                cy: 218,
-                text: ""
-              },
-            ]
-        }
       ]
     }
 })();
