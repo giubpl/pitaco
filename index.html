@@ -15,33 +15,17 @@
 </head>
 <body>
 
-
-
   <div id="modal-view-pitaco" class="modal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <svg height="70" viewBox="0 0 262.5 77.5" >
-            <clipPath id="pitaco-view-author-image-path"><circle cx="37.8" cy="42" r="33.3"/></clipPath>
-            <g class="link-to-initial-page" data-dismiss="modal" aria-label="Close"
-               clip-path="url(#pitaco-view-author-image-path)">
-              <image id="pitaco-view-author-image" width="266" height="266" transform="matrix(0.2506 0 0 0.2506 4.4262 8.8552)"></image>
-            </g>
-            <circle fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" cx="37.8" cy="42" r="33.3"/>
-            <text id="pitaco-view-author-name" class="link-to-initial-page" data-dismiss="modal" aria-label="Close" transform="matrix(1 0 0 1 87.1667 25.9593)" fill="#FFFFFF" font-weigth="500" font-size="18"></text>
-            <text id="pitaco-view-author-area" class="link-to-initial-page" data-dismiss="modal" aria-label="Close" transform="matrix(1 0 0 1 87.1667 44.9593)" fill="#FFFFFF" font-weigth="300" font-size="14"></text>
-            <a xlink:href="#"><text transform="matrix(1 0 0 1 87.1667 62.9562)" fill="#3A99D8" font-weigth="700" font-size="14">outros projetos</text></a>
-          </svg>
+          <svg id="modal-view-pitaco-author" height="70"></svg>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <img src="img/close_icon.png" width="15" height="15" />
+            <img src="img/close_icon.png" width="12" height="12" />
           </button>
         </div>
         <div class="modal-body">
           <p>One fine body&hellip;</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
@@ -119,9 +103,7 @@
 
           <svg id="pitaco-net-svg">
             <rect width="100%" height="100%" style="fill:none; pointer-events:all"></rect>
-            <g id="pitaco-net-zoom-group" stroke="white" stroke-width="1">
-              <g id="pitaco-tree" transform="translate(50, -80)"></g>
-            </g>
+            <g id="pitaco-net-zoom-group"><g id="pitaco-tree" transform="translate(50, -80)"></g></g>
           </svg>
 
           <svg id="pitaco-net-filters" viewBox="0 0 1000 1000" height="1000" preserveAspectRatio="xMaxYMid meet"></svg>
@@ -137,16 +119,7 @@
           	<text id="project-info-name" transform="matrix(1 0 0 1 78.6667 26.3332)" fill="#FFFFFF" font-weight="700" font-size="24"></text>
           </svg>
 
-          <svg width="250" x="20" y="-20" preserveAspectRatio="xMinYMax meet" viewBox="0 0 262.5 77.5" >
-            <clipPath id="project-author-image-path"><circle cx="37.8" cy="42" r="33.3"/></clipPath>
-            <g class="link-to-initial-page" clip-path="url(#project-author-image-path)">
-              <image id="project-author-image" width="266" height="266" transform="matrix(0.2506 0 0 0.2506 4.4262 8.8552)"></image>
-            </g>
-            <circle fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" cx="37.8" cy="42" r="33.3"/>
-            <text id="project-author-name" class="link-to-initial-page" transform="matrix(1 0 0 1 87.1667 25.9593)" fill="#FFFFFF" font-weigth="500" font-size="18"></text>
-            <text id="project-author-area" class="link-to-initial-page" transform="matrix(1 0 0 1 87.1667 44.9593)" fill="#FFFFFF" font-weigth="300" font-size="14"></text>
-            <a xlink:href="#"><text transform="matrix(1 0 0 1 87.1667 62.9562)" fill="#3A99D8" font-weigth="700" font-size="14">outros projetos</text></a>
-          </svg>
+          <svg id="pitaco-net-project-author" width="250" x="20" y="-20" preserveAspectRatio="xMinYMax meet"></svg>
 
           <svg id="button-dar-pitaco" x="100%" y="100%" width="113" height="35" style="overflow: visible;">
             <g transform="translate(-133, -65)">

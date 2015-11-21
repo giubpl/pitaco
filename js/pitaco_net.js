@@ -44,6 +44,10 @@ PitacoDrawerHelper.prototype.drawLine = function(element, x1, y1, x2, y2) {
   return element.append("line").attr("x1", x1).attr("y1", y1).attr("x2", x2).attr("y2", y2);
 }
 
+PitacoDrawerHelper.prototype.drawText = function(element, textMessage, fontWeight, fontSize) {
+  return element.append("text").text(textMessage).attr("font-weight", fontWeight).attr("font-size", fontSize);
+}
+
 PitacoDrawerHelper.prototype.switchActiveBranch = function(newActiveBranchId) {
   if(this.activeBranchId) {
     d3.select("#" + this.activeBranchId).classed("active-display", false);
@@ -61,55 +65,61 @@ PitacoDrawerHelper.prototype.switchActiveBranch = function(newActiveBranchId) {
   }
 }
 
-PitacoDrawerHelper.prototype.drawFilters = function() {
-  var filtersArea = d3.select("#pitaco-net-filters");
-  filtersArea.html("");
+PitacoDrawerHelper.prototype.drawFilters = function(element) {
+  element.selectAll("*").remove();
 
   var cx = 1000 - this.filterMarginX, cy = this.filterMarginY;
-  filtersArea.append("text")
-            .attr("font-weight", 500)
-            .attr("font-size", "17px")
+  this.drawText(element, "Filtros", 500, 17)
             .attr("x", cx + this.branchRadius)
             .attr("y", cy)
             .attr("text-anchor", "end")
-            .attr("alignment-baseline", "text-before-edge")
-            .text("Filtros");
+            .attr("alignment-baseline", "text-before-edge");
 
   var lastcy = cy + (this.branches.length) * this.filterButtonsIncreaseY;
-  this.drawLine(filtersArea, cx, cy + this.filterButtonsIncreaseY, cx, lastcy).attr("id", "branch-filter-line");
+  this.drawLine(element, cx, cy + this.filterButtonsIncreaseY, cx, lastcy)
+            .attr("id", "branch-filter-line");
 
   this.branches.forEach(function drawFilter(branchInfo, index) {
     cy += this.filterButtonsIncreaseY;
-    this.drawLine(filtersArea, cx, cy, cx, cy)
+    this.drawLine(element, cx, cy, cx, cy)
             .attr("class", "branch-filter-button")
             .attr("id", "button-filter-"+branchInfo.id)
             .attr("stroke", branchInfo.color)
-            .on("click", function() {
-                this.switchActiveBranch(branchInfo.id)
-            }.bind(this));
+            .on("click", function() { this.switchActiveBranch(branchInfo.id) }.bind(this));
 
-    filtersArea.append("text")
-            .attr("font-weight", 300)
-            .attr("font-size", "13px")
+    this.drawText(element, branchInfo.filterText, 300, 13)
             .attr("x", cx - this.filterTextDistanceX)
             .attr("y", cy + this.branchRadius*3/4)
-            .attr("text-anchor", "end")
-            .text(branchInfo.filterText);
+            .attr("text-anchor", "end");
   }.bind(this));
+}
+
+PitacoDrawerHelper.prototype.drawAuthorInfo = function(element, authorInfo) {
+  element.selectAll("*").remove();
+  element.attr("viewBox", "0 0 262 77");
+
+  this.drawCircleWithImage(element, {cx: 37, cy: 42, img: authorInfo.img}, 33)
+            .attr("stroke-width", 2).attr("stroke", "#FFFFFF");
+
+  this.drawText(element, authorInfo.name, 500, 18)
+            .attr("fill", "#FFFFFF").attr("x", 87).attr("y", 27).attr("style", "cursor: default");
+
+  this.drawText(element, authorInfo.area, 300, 14)
+            .attr("fill", "#FFFFFF").attr("x", 87).attr("y", 47).attr("style", "cursor: default");
+
+  var otherProjectsLink = element.append("a").attr("xlink:href", "#");
+  this.drawText(otherProjectsLink, "outros projetos", 700, 14)
+            .attr("fill", "#3A99D8").attr("x", 87).attr("y", 65);
 }
 
 PitacoDrawerHelper.prototype.openPitacoDetailView = function(pitacoInfo) {
   if(!pitacoInfo.author) return;
 
+  this.drawAuthorInfo(d3.select("#modal-view-pitaco-author"), pitacoInfo.author);
+
   var modalElement = $("#modal-view-pitaco");
   modalElement.find(".modal-body").text(pitacoInfo.text);
-  d3.select("#pitaco-view-author-image").attr("xlink:href", pitacoInfo.author.img);
-  d3.select("#pitaco-view-author-name").text(pitacoInfo.author.name);
-  d3.select("#pitaco-view-author-area").text(pitacoInfo.author.area);
-  modalElement.modal({
-    show: true,
-    backdrop: "static"
-  });
+  modalElement.modal({ show: true, backdrop: "static" });
 }
 
 PitacoDrawerHelper.prototype.drawPitacos = function(branch, pitacos, fatherCx, fatherCy, drawJustLines) {
@@ -126,8 +136,8 @@ PitacoDrawerHelper.prototype.drawPitacos = function(branch, pitacos, fatherCx, f
   }.bind(this))
 }
 
-PitacoDrawerHelper.prototype.drawBranch = function(pitacoTree, branchInfo, styles) {
-  var branch = pitacoTree.append("g").attr("id", branchInfo.id);
+PitacoDrawerHelper.prototype.drawBranch = function(element, branchInfo, styles) {
+  var branch = element.append("g").attr("id", branchInfo.id);
   this.drawLine(branch, this.centralProject.cx, this.centralProject.cy, branchInfo.cx, branchInfo.cy);
   this.drawPitacos(branch, branchInfo.pitacos, branchInfo.cx, branchInfo.cy, true);
   this.drawSimpleCircle(branch, branchInfo, this.branchRadius);
@@ -136,15 +146,12 @@ PitacoDrawerHelper.prototype.drawBranch = function(pitacoTree, branchInfo, style
   styles.push("{fill:" + branchInfo.color + "; stroke:" + branchInfo.color + ";}");
 }
 
-PitacoDrawerHelper.prototype.drawPitacoTree = function() {
-  var pitacoTree = d3.select("#pitaco-tree");
-  pitacoTree.html("");
+PitacoDrawerHelper.prototype.drawPitacoTree = function(element) {
+  element.selectAll("*").remove();
   var styles = [];
-  this.branches.forEach(function(branchInfo) {
-    this.drawBranch(pitacoTree, branchInfo, styles);
-  }.bind(this));
-  pitacoTree.append("style").text(styles.join(""));
-  this.drawCircleWithImage(pitacoTree, this.centralProject, this.centralRadius).attr("id", "net-central");
+  this.branches.forEach(function(branchInfo) { this.drawBranch(element, branchInfo, styles); }.bind(this));
+  element.append("style").text(styles.join(""));
+  this.drawCircleWithImage(element, this.centralProject, this.centralRadius).attr("id", "net-central");
 }
 
 PitacoDrawerHelper.prototype.updateProjectInfo = function() {
@@ -156,17 +163,11 @@ PitacoDrawerHelper.prototype.updateProjectInfo = function() {
   });
 }
 
-PitacoDrawerHelper.prototype.updateProjectAuthor = function() {
-  d3.select("#project-author-image").attr("xlink:href", this.centralProject.author.img);
-  d3.select("#project-author-name").text(this.centralProject.author.name);
-  d3.select("#project-author-area").text(this.centralProject.author.area);
-}
-
 PitacoDrawerHelper.prototype.drawPitacoNet = function() {
-  this.drawPitacoTree();
-  this.drawFilters();
+  this.drawPitacoTree(d3.select("#pitaco-tree"));
+  this.drawFilters(d3.select("#pitaco-net-filters"));
+  this.drawAuthorInfo(d3.select("#pitaco-net-project-author"), this.centralProject.author);
   this.updateProjectInfo();
-  this.updateProjectAuthor();
 }
 
 PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {

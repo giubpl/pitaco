@@ -28,6 +28,10 @@ span, a {
     overflow-y: scroll;
 }
 
+.btn {
+  font-family: "Roboto"
+}
+
 .image-display {
   cursor: pointer;
 }
