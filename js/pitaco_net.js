@@ -152,7 +152,7 @@ PitacoDrawerHelper.prototype.openPitacoDetailView = function(pitacoInfo) {
   if(pitacoInfo.tags) pitacoInfo.tags.forEach(function(tag) {
     var newButton = $("<button />", { class: 'btn btn-xs', html: tag, type: "button" })
           .css("background-color", "#111111").css("color", "#FFFFFF")
-          .css("font-weight", 300).css("font-size", "10px")
+          .css("font-weight", 300).css("font-size", "11px")
           .css("margin-left", "3px").css("cursor", "default");
     tagArea.append(newButton);
   }.bind(this));
