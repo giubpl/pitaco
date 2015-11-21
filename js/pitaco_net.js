@@ -191,7 +191,7 @@ PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {
 
 PitacoDrawerHelper.prototype.drawAddPitacoModal = function() {
   this.svgDrawerHelper.drawButton(d3.select("#modal-add-pitaco-button-cancel"), "#C63E37", "Cancelar", 300, 14, true);
-  this.svgDrawerHelper.drawButton(d3.select("#modal-add-pitaco-button-confirm"), "#289AD6", "Pitacar", 300, 14, true);
+  this.svgDrawerHelper.drawButton(d3.select("#modal-add-pitaco-button-confirm"), "#1478BB", "Pitacar", 300, 14, true);
 }
 
 PitacoDrawerHelper.prototype.drawAddPitacoButton = function() {
