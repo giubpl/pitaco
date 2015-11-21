@@ -24,9 +24,10 @@ PitacoDrawerHelper.prototype.drawCircleWithImage = function(element, circleInfo,
   circleGroup.append("image")
                 .attr("x", circleInfo.cx - radius)
                 .attr("y", circleInfo.cy - radius)
-                .attr("width", 2*radius)
                 .attr("height", 2*radius)
+                .attr("width", 2*radius)
                 .attr("xlink:href", circleInfo.img)
+                .attr("preserveAspectRatio", "none")
                 .attr("clip-path", "url(#" + uniqueId + ")");
   circleGroup.append("circle")
                 .attr("fill", "none")
@@ -111,13 +112,38 @@ PitacoDrawerHelper.prototype.drawAuthorInfo = function(element, authorInfo) {
             .attr("fill", "#3A99D8").attr("x", 87).attr("y", 65);
 }
 
+PitacoDrawerHelper.prototype.getVideoId = function(videoUrl) {
+  var preVersionTag = "watch?v=";
+  var indexOfPreVersion = videoUrl.indexOf(preVersionTag);
+  if(indexOfPreVersion != -1)
+    return videoUrl.substring(indexOfPreVersion + preVersionTag.length);
+  else
+    return videoUrl.substring(videoUrl.lastIndexOf("/") + 1);
+}
+
 PitacoDrawerHelper.prototype.openPitacoDetailView = function(pitacoInfo) {
   if(!pitacoInfo.author) return;
 
   this.drawAuthorInfo(d3.select("#modal-view-pitaco-author"), pitacoInfo.author);
 
   var modalElement = $("#modal-view-pitaco");
-  modalElement.find(".modal-body").text(pitacoInfo.text);
+  modalElement.find(".modal-body-text").text(pitacoInfo.text);
+  if(pitacoInfo.video) {
+    var videos = modalElement.find(".modal-body-videos").empty();
+    if(!Array.isArray(pitacoInfo.video)) pitacoInfo.video = [ pitacoInfo.video ];
+    pitacoInfo.video.forEach(function(url) {
+      var videoId = this.getVideoId(url);
+      var iFrameTag = $("<iframe src='https://www.youtube.com/embed/" + videoId + "' frameborder='0' allowfullscreen></iframe>");
+      videos.append(iFrameTag);
+    }.bind(this));
+  }
+  if(pitacoInfo.img != pitacoInfo.author.img) {
+    var images = modalElement.find(".modal-body-images").empty();
+    if(pitacoInfo.img) {
+      if(!Array.isArray(pitacoInfo.img)) pitacoInfo.img = [ pitacoInfo.img ];
+      pitacoInfo.img.forEach(function(img) { images.append($("<img src='" + img + "' />")); });
+    }
+  }
   modalElement.modal("show");
 }
 
@@ -128,10 +154,19 @@ PitacoDrawerHelper.prototype.drawPitacos = function(branch, pitacos, fatherCx, f
     this.drawPitacos(branch, pitacoInfo.pitacos, pitacoInfo.cx, pitacoInfo.cy, drawJustLines);
     if(drawJustLines)
       this.drawLine(branch, fatherCx, fatherCy, pitacoInfo.cx, pitacoInfo.cy);
-    else
-      this.drawCircleWithImage(branch, pitacoInfo, this.pitacoRadius)
+    else {
+      var circleInfo = { cx: pitacoInfo.cx, cy: pitacoInfo.cy, img: pitacoInfo.img };
+      var img = circleInfo.img;
+      var video = pitacoInfo.video;
+      if(Array.isArray(video)) video = video[0];
+      if(video) img = "http://img.youtube.com/vi/" + this.getVideoId(video) + "/mqdefault.jpg";
+      if(Array.isArray(img)) img = img[0];
+      if(!img && pitacoInfo.author) img = pitacoInfo.author.img;
+      circleInfo.img = img;
+      this.drawCircleWithImage(branch, circleInfo, this.pitacoRadius)
           .attr("class", "pitaco-circle")
           .on("click", function() { this.openPitacoDetailView(pitacoInfo); }.bind(this));
+    }
   }.bind(this))
 }
 
