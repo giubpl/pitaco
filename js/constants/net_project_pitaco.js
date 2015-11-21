@@ -37,6 +37,7 @@
               {
                 img: ["img/FE16967CFCAF933B.jpg", "img/B943C01085604582.jpg"],
 								video: "https://youtu.be/yRwupxDOZn0",
+								tags: ["Video", "Aplicativo", "Pepe"],
 								cx: 271,
                 cy: 175,
                 text: "Acho o projeto sensasional! Um espaço para troca de pitacos é o que todo designer precisa.",

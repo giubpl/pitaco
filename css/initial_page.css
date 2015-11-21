@@ -51,6 +51,19 @@
   height: 600px;
 }
 
+#modal-view-pitaco .modal-body-text {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+#modal-view-pitaco .modal-body-header {
+  padding: 0px;
+}
+
+.modal-view-pitaco-tag-area button:focus, .modal-view-pitaco-tag-area button:active {
+    outline: none;
+}
+
 #modal-view-pitaco .modal-body {
   background-color: #eeeeee;
   height: 500px;
