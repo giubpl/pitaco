@@ -42,8 +42,13 @@
 
 #pitaco-tree {
   stroke-width: 2;
-  stroke-miterlimit: 10;
   fill: #BBBBBB;
+  stroke: #BBBBBB;
+}
+
+#pitaco-net-project-author circle,
+#pitaco-net-project-info circle {
+  stroke-width: 2;
   stroke: #BBBBBB;
 }
 

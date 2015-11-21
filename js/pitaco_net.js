@@ -98,8 +98,7 @@ PitacoDrawerHelper.prototype.drawAuthorInfo = function(element, authorInfo) {
   element.selectAll("*").remove();
   element.attr("viewBox", "0 0 262 77");
 
-  this.drawCircleWithImage(element, {cx: 37, cy: 42, img: authorInfo.img}, 33)
-            .attr("stroke-width", 2).attr("stroke", "#FFFFFF");
+  this.drawCircleWithImage(element, {cx: 37, cy: 42, img: authorInfo.img}, 33);
 
   this.drawText(element, authorInfo.name, 500, 18)
             .attr("fill", "#FFFFFF").attr("x", 87).attr("y", 27).attr("style", "cursor: default");
@@ -119,7 +118,7 @@ PitacoDrawerHelper.prototype.openPitacoDetailView = function(pitacoInfo) {
 
   var modalElement = $("#modal-view-pitaco");
   modalElement.find(".modal-body").text(pitacoInfo.text);
-  modalElement.modal({ show: true, backdrop: "static" });
+  modalElement.modal("show");
 }
 
 PitacoDrawerHelper.prototype.drawPitacos = function(branch, pitacos, fatherCx, fatherCy, drawJustLines) {
