@@ -12,41 +12,52 @@ function PitacoDrawerHelper(projectName) {
   this.activeBranchId = "";
 }
 
-PitacoDrawerHelper.prototype.drawCircleWithImage = function(element, circleInfo, radius) {
-  var uniqueId = "pitaco-net-id-" + (this.idCounter++);
-  var circleGroup = element.append("g");
-  var clipPath = circleGroup.append("clipPath")
-                .attr("id", uniqueId)
-                .append("circle")
-                      .attr("cx", circleInfo.cx)
-                      .attr("cy", circleInfo.cy)
-                      .attr("r", radius);
-  circleGroup.append("image")
-                .attr("x", circleInfo.cx - radius)
-                .attr("y", circleInfo.cy - radius)
-                .attr("height", 2*radius)
-                .attr("width", 2*radius)
-                .attr("xlink:href", circleInfo.img)
-                .attr("preserveAspectRatio", "none")
-                .attr("clip-path", "url(#" + uniqueId + ")");
-  circleGroup.append("circle")
-                .attr("fill", "none")
-                .attr("cx", circleInfo.cx)
-                .attr("cy", circleInfo.cy)
-                .attr("r", radius);
-  return circleGroup;
+PitacoDrawerHelper.prototype.getUniqueid = function() {
+  return "pitaco-net-id-" + (this.idCounter++);
 }
 
 PitacoDrawerHelper.prototype.drawSimpleCircle = function(element, circleInfo, radius) {
   return element.append("circle").attr("cx", circleInfo.cx).attr("cy", circleInfo.cy).attr("r", radius);
 }
 
+PitacoDrawerHelper.prototype.drawCircleWithImage = function(element, circleInfo, radius) {
+  var uniqueId = this.getUniqueid();
+  var circleGroup = element.append("g");
+  this.drawSimpleCircle(circleGroup.append("clipPath").attr("id", uniqueId), circleInfo, radius);
+  circleGroup.append("image").attr("xlink:href", circleInfo.img)
+                .attr("x", circleInfo.cx - radius).attr("y", circleInfo.cy - radius)
+                .attr("height", 2*radius).attr("width", 2*radius)
+                .attr("preserveAspectRatio", "none")
+                .attr("clip-path", "url(#" + uniqueId + ")");
+  this.drawSimpleCircle(circleGroup, circleInfo, radius).attr("fill", "none");
+  return circleGroup;
+}
+
 PitacoDrawerHelper.prototype.drawLine = function(element, x1, y1, x2, y2) {
   return element.append("line").attr("x1", x1).attr("y1", y1).attr("x2", x2).attr("y2", y2);
 }
 
-PitacoDrawerHelper.prototype.drawText = function(element, textMessage, fontWeight, fontSize) {
-  return element.append("text").text(textMessage).attr("font-weight", fontWeight).attr("font-size", fontSize);
+PitacoDrawerHelper.prototype.drawText = function(element, textMessage, fontWeight, fontSize, fill, keepCursor) {
+  var text = element.append("text").text(textMessage).attr("font-weight", fontWeight).attr("font-size", fontSize).attr("fill", fill);
+  if(!keepCursor) text.attr("style", "cursor: default");
+  return text;
+}
+
+PitacoDrawerHelper.prototype.drawButton = function(element, fill, text, fontWeight, fontSize, hasHover) {
+  element.selectAll("*").remove();
+  var rect = element.append("rect")
+                .attr("rx", 3).attr("ry", 3)
+                .attr("width", "100%").attr("height", "100%")
+                .attr("fill", fill);
+  if(hasHover) {
+    element.style("cursor", "pointer");
+    element.style("opacity", "0.9");
+    element.on("mouseover", function() { element.style("opacity", "1");});
+    element.on("mouseout", function() { element.style("opacity", "0.9");});
+  }
+  this.drawText(element, text, fontWeight, fontSize, "#FFFFFF", hasHover)
+                .attr("x", "50%").attr("y", "50%")
+                .attr("alignment-baseline", "central").attr("text-anchor", "middle");
 }
 
 PitacoDrawerHelper.prototype.switchActiveBranch = function(newActiveBranchId) {
@@ -70,7 +81,7 @@ PitacoDrawerHelper.prototype.drawFilters = function(element) {
   element.selectAll("*").remove();
 
   var cx = 1000 - this.filterMarginX, cy = this.filterMarginY;
-  this.drawText(element, "Filtros", 500, 17)
+  this.drawText(element, "Filtros", 500, 17, "#FFFFFF")
             .attr("x", cx + this.branchRadius)
             .attr("y", cy)
             .attr("text-anchor", "end")
@@ -87,8 +98,7 @@ PitacoDrawerHelper.prototype.drawFilters = function(element) {
             .attr("id", "button-filter-"+branchInfo.id)
             .attr("stroke", branchInfo.color)
             .on("click", function() { this.switchActiveBranch(branchInfo.id) }.bind(this));
-
-    this.drawText(element, branchInfo.filterText, 300, 13)
+    this.drawText(element, branchInfo.filterText, 300, 13, "#FFFFFF")
             .attr("x", cx - this.filterTextDistanceX)
             .attr("y", cy + this.branchRadius*3/4)
             .attr("text-anchor", "end");
@@ -98,18 +108,11 @@ PitacoDrawerHelper.prototype.drawFilters = function(element) {
 PitacoDrawerHelper.prototype.drawAuthorInfo = function(element, authorInfo) {
   element.selectAll("*").remove();
   element.attr("viewBox", "0 0 262 77");
-
   this.drawCircleWithImage(element, {cx: 37, cy: 42, img: authorInfo.img}, 33);
-
-  this.drawText(element, authorInfo.name, 500, 18)
-            .attr("fill", "#FFFFFF").attr("x", 87).attr("y", 27).attr("style", "cursor: default");
-
-  this.drawText(element, authorInfo.area, 300, 14)
-            .attr("fill", "#FFFFFF").attr("x", 87).attr("y", 47).attr("style", "cursor: default");
-
+  this.drawText(element, authorInfo.name, 500, 18, "#FFFFFF").attr("x", 87).attr("y", 27);
+  this.drawText(element, authorInfo.area, 300, 14, "#FFFFFF").attr("x", 87).attr("y", 47);
   var otherProjectsLink = element.append("a").attr("xlink:href", "#");
-  this.drawText(otherProjectsLink, "outros projetos", 700, 14)
-            .attr("fill", "#3A99D8").attr("x", 87).attr("y", 65);
+  this.drawText(otherProjectsLink, "outros projetos", 700, 14, "#3A99D8", true).attr("x", 87).attr("y", 65);
 }
 
 PitacoDrawerHelper.prototype.getVideoId = function(videoUrl) {
@@ -201,6 +204,7 @@ PitacoDrawerHelper.prototype.drawPitacoNet = function() {
   this.drawPitacoTree(d3.select("#pitaco-tree"));
   this.drawFilters(d3.select("#pitaco-net-filters"));
   this.drawAuthorInfo(d3.select("#pitaco-net-project-author"), this.centralProject.author);
+  this.drawButton(d3.select("#button-dar-pitaco"), "#3498DB", "Dar pitaco", 700, 15, true);
   this.updateProjectInfo();
 }
 

@@ -7,28 +7,19 @@
   font-family: 'Roboto';
 }
 
-#pitaco-net-filters text,
-#button-dar-pitaco text,
 #pitaco-net-svg text {
   fill: #FFFFFF;
 }
 
-#pitaco-net-filters text {
-  cursor: default;
-}
-
-#button-dar-pitaco,
 #button-seguir {
   opacity: 0.9;
   cursor: pointer;
 }
 
-#button-dar-pitaco:hover,
 #button-seguir:hover {
   opacity: 1;
 }
 
-#button-dar-pitaco path,
 #button-seguir path {
   fill: #3498DB;
 }
