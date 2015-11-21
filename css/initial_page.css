@@ -48,7 +48,7 @@
 
 #modal-view-pitaco .modal-dialog {
   width: 600px;
-  height: 600px;
+  max-height: 600px;
 }
 
 #modal-view-pitaco .modal-body-text {
@@ -66,6 +66,6 @@
 
 #modal-view-pitaco .modal-body {
   background-color: #eeeeee;
-  height: 500px;
+  max-height: 500px;
   overflow-y: scroll;
 }

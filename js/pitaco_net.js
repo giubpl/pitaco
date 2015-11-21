@@ -131,8 +131,8 @@ PitacoDrawerHelper.prototype.openPitacoDetailView = function(pitacoInfo) {
 
   var modalElement = $("#modal-view-pitaco");
   modalElement.find(".modal-body-text").text(pitacoInfo.text);
+  var videos = modalElement.find(".modal-body-videos").empty();
   if(pitacoInfo.video) {
-    var videos = modalElement.find(".modal-body-videos").empty();
     if(!Array.isArray(pitacoInfo.video)) pitacoInfo.video = [ pitacoInfo.video ];
     pitacoInfo.video.forEach(function(url) {
       var videoId = this.getVideoId(url);
@@ -140,8 +140,8 @@ PitacoDrawerHelper.prototype.openPitacoDetailView = function(pitacoInfo) {
       videos.append(iFrameTag);
     }.bind(this));
   }
+  var images = modalElement.find(".modal-body-images").empty();
   if(pitacoInfo.img != pitacoInfo.author.img) {
-    var images = modalElement.find(".modal-body-images").empty();
     if(pitacoInfo.img) {
       if(!Array.isArray(pitacoInfo.img)) pitacoInfo.img = [ pitacoInfo.img ];
       pitacoInfo.img.forEach(function(img) { images.append($("<img src='" + img + "' />")); });
