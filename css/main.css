@@ -28,7 +28,8 @@ span, a {
     overflow-y: scroll;
 }
 
-.btn {
+
+.modal-dialog, .btn {
   font-family: "Roboto"
 }
 
