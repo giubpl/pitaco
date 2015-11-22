@@ -189,9 +189,20 @@ PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {
       });
 }
 
+PitacoDrawerHelper.prototype.getContentEditableText = function(id) {
+  var ce = $("<pre />").html($("#" + id).html());
+    ce.find("div").replaceWith(function() { return "\n" + this.innerHTML; });
+    ce.find("p").replaceWith(function() { return this.innerHTML + "<br>"; });
+    ce.find("br").replaceWith("\n");
+  return ce.text();
+}
+
 PitacoDrawerHelper.prototype.drawAddPitacoModal = function() {
   this.svgDrawerHelper.drawButton(d3.select("#modal-add-pitaco-button-cancel"), "#C63E37", "Cancelar", 300, 14, true);
-  this.svgDrawerHelper.drawButton(d3.select("#modal-add-pitaco-button-confirm"), "#1478BB", "Pitacar", 300, 14, true);
+  this.svgDrawerHelper.drawButton(d3.select("#modal-add-pitaco-button-confirm"), "#1478BB", "Pitacar", 300, 14, true)
+          .on("click", function () {
+            alert(this.getContentEditableText("pitaco-text-area"));
+          }.bind(this));
 }
 
 PitacoDrawerHelper.prototype.drawAddPitacoButton = function() {

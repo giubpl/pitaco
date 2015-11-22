@@ -47,7 +47,15 @@
           <p>De o seu pitaco</p>
         </div>
         <div class="modal-body">
-          <p>One fine body&hellip;</p>
+          <ul id="add-pitaco-activator" class="nav-tabs">
+            <li><a href="#upload-image" data-toggle="tab" role="tab">
+              <button class="btn btn-primary btn-sm">upload</button>
+            </a></li>
+            <li><a href="#pitaco-net" data-toggle="tab" role="tab">
+              <button class="btn btn-primary btn-sm">share</button>
+            </a></li>
+          </ul>
+          <div contenteditable id="pitaco-text-area" class="form-control"></div>
         </div>
         <div class="modal-footer">
           <svg id="modal-add-pitaco-button-cancel" data-dismiss="modal" width="100" height="25"></svg>
