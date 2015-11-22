@@ -197,8 +197,6 @@ PitacoDrawerHelper.prototype.getContentEditableText = function(id) {
   return ce.text();
 }
 
-PitacoDrawerHelper.prototype.imageFilterExpression = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
-
 PitacoDrawerHelper.prototype.displayLastImage = function(fileInput) {
   var nFiles = fileInput.files.length;
   if(nFiles == 0) return;
@@ -206,10 +204,6 @@ PitacoDrawerHelper.prototype.displayLastImage = function(fileInput) {
 
   var reader = new FileReader();
   reader.onload = function (e) {
-    if (!this.imageFilterExpression.test(theFile.type)) {
-      alert("You must select a valid image file!");
-      return;
-    }
     var newDiv = $("<div class='uploaded-image' />").css("background-image", "url(" + e.target.result + ")");
     var removeImage = $("<div class='image-remove' />");
     removeImage.append($("<img src='img/close_icon.png'/>"));
@@ -217,7 +211,7 @@ PitacoDrawerHelper.prototype.displayLastImage = function(fileInput) {
     newDiv.append($("<img class='ghost-image' />").attr("src", e.target.result));
     removeImage.click(function() { newDiv.remove(); });
     $('#uploaded-images').append(newDiv);
-  }.bind(this);
+  };
 
   reader.readAsDataURL(theFile);
 }
