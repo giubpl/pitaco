@@ -201,7 +201,6 @@ PitacoDrawerHelper.prototype.displayLastImage = function(fileInput) {
   var nFiles = fileInput.files.length;
   if(nFiles == 0) return;
   var theFile = fileInput.files[nFiles-1];
-
   var reader = new FileReader();
   reader.onload = function (e) {
     var newDiv = $("<div class='uploaded-image' />").css("background-image", "url(" + e.target.result + ")");
@@ -209,10 +208,12 @@ PitacoDrawerHelper.prototype.displayLastImage = function(fileInput) {
     removeImage.append($("<img src='img/close_icon.png'/>"));
     newDiv.append(removeImage);
     newDiv.append($("<img class='ghost-image' />").attr("src", e.target.result));
-    removeImage.click(function() { newDiv.remove(); });
+    removeImage.click(function() {
+      newDiv.remove();
+      $(fileInput).wrap('<form>').closest('form').get(0).reset();
+    });
     $('#uploaded-images').append(newDiv);
   };
-
   reader.readAsDataURL(theFile);
 }
 
@@ -225,7 +226,7 @@ PitacoDrawerHelper.prototype.drawAddPitacoModal = function() {
 
   var fileInput = document.getElementById("modal-pitaco-file-input");
   $('#uploaded-images').empty();
-  $(fileInput).change(function() { this.displayLastImage(fileInput); }.bind(this));
+  $(fileInput).unbind('change').change(function() { this.displayLastImage(fileInput); }.bind(this));
 }
 
 PitacoDrawerHelper.prototype.drawAddPitacoButton = function() {
