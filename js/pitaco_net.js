@@ -217,24 +217,20 @@ PitacoDrawerHelper.prototype.displayLastImage = function(fileInput) {
   reader.readAsDataURL(theFile);
 }
 
-PitacoDrawerHelper.prototype.drawAddPitacoModal = function() {
-  this.svgDrawerHelper.drawButton(d3.select("#modal-add-pitaco-button-cancel"), "#C63E37", "Cancelar", 300, 14, true);
-  this.svgDrawerHelper.drawButton(d3.select("#modal-add-pitaco-button-confirm"), "#1478BB", "Pitacar", 300, 14, true)
-          .on("click", function () {
-            alert(this.getContentEditableText("pitaco-text-area"));
-          }.bind(this));
-
+PitacoDrawerHelper.prototype.addPitacoModalEvents = function() {
+  $("#modal-add-pitaco-button-confirm").click(function() {
+    alert(this.getContentEditableText("pitaco-text-area"));
+  });
   var fileInput = document.getElementById("modal-pitaco-file-input");
-  $('#uploaded-images').empty();
   $(fileInput).unbind('change').change(function() { this.displayLastImage(fileInput); }.bind(this));
 }
 
 PitacoDrawerHelper.prototype.drawAddPitacoButton = function() {
   this.svgDrawerHelper.drawButton(d3.select("#button-dar-pitaco"), "#3498DB", "Dar pitaco", 700, 15, true)
         .on("click", function() {
-          this.drawAddPitacoModal();
-          $("#modal-add-pitaco").modal({show: true, backdrop: "static"});
-        }.bind(this));
+            $('#uploaded-images').empty();
+            $("#modal-add-pitaco").modal({show: true, backdrop: "static"});
+        });
 }
 
 $(document).ready(function() {
@@ -242,5 +238,5 @@ $(document).ready(function() {
   drawer.drawPitacoNet();
   drawer.addZoomerBehaviour();
   drawer.drawAddPitacoButton();
-  //drawer.drawAddPitacoModal();
+  drawer.addPitacoModalEvents();
 });

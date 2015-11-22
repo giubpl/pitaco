@@ -1,0 +1,91 @@
+.custom-btn-primary {
+  color: #FFFFFF;
+  background-color: #1478BB;
+  border-color: #1478BB;
+}
+
+.custom-btn-primary:hover,
+.custom-btn-primary:focus,
+.custom-btn-primary:active,
+.custom-btn-primary.active,
+.open .dropdown-toggle.custom-btn-primary {
+  color: #FFFFFF;
+  background-color: #00589B;
+  border-color: #1478BB;
+}
+
+.custom-btn-primary:active,
+.custom-btn-primary.active,
+.open .dropdown-toggle.custom-btn-primary {
+  background-image: none;
+}
+
+.custom-btn-primary.disabled,
+.custom-btn-primary[disabled],
+fieldset[disabled] .custom-btn-primary,
+.custom-btn-primary.disabled:hover,
+.custom-btn-primary[disabled]:hover,
+fieldset[disabled] .custom-btn-primary:hover,
+.custom-btn-primary.disabled:focus,
+.custom-btn-primary[disabled]:focus,
+fieldset[disabled] .custom-btn-primary:focus,
+.custom-btn-primary.disabled:active,
+.custom-btn-primary[disabled]:active,
+fieldset[disabled] .custom-btn-primary:active,
+.custom-btn-primary.disabled.active,
+.custom-btn-primary[disabled].active,
+fieldset[disabled] .custom-btn-primary.active {
+  background-color: #1478BB;
+  border-color: #1478BB;
+}
+
+.custom-btn-primary .badge {
+  color: #1478BB;
+  background-color: #FFFFFF;
+}
+
+.custom-btn-cancel {
+  color: #FFFFFF;
+  background-color: #C63E37;
+  border-color: #C63E37;
+}
+
+.custom-btn-cancel:hover,
+.custom-btn-cancel:focus,
+.custom-btn-cancel:active,
+.custom-btn-cancel.active,
+.open .dropdown-toggle.custom-btn-cancel {
+  color: #FFFFFF;
+  background-color: #A61E17;
+  border-color: #C63E37;
+}
+
+.custom-btn-cancel:active,
+.custom-btn-cancel.active,
+.open .dropdown-toggle.custom-btn-cancel {
+  background-image: none;
+}
+
+.custom-btn-cancel.disabled,
+.custom-btn-cancel[disabled],
+fieldset[disabled] .custom-btn-cancel,
+.custom-btn-cancel.disabled:hover,
+.custom-btn-cancel[disabled]:hover,
+fieldset[disabled] .custom-btn-cancel:hover,
+.custom-btn-cancel.disabled:focus,
+.custom-btn-cancel[disabled]:focus,
+fieldset[disabled] .custom-btn-cancel:focus,
+.custom-btn-cancel.disabled:active,
+.custom-btn-cancel[disabled]:active,
+fieldset[disabled] .custom-btn-cancel:active,
+.custom-btn-cancel.disabled.active,
+.custom-btn-cancel[disabled].active,
+fieldset[disabled] .custom-btn-cancel.active {
+  background-color: #C63E37;
+  border-color: #C63E37;
+}
+
+.custom-btn-cancel .badge {
+  color: #C63E37;
+  background-color: #FFFFFF;
+}
