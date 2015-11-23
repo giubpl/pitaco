@@ -67,15 +67,6 @@ PitacoDrawerHelper.prototype.drawAuthorInfo = function(element, authorInfo) {
   this.svgDrawerHelper.drawText(link, "outros projetos", 700, 14, "#3A99D8", true).attr("x", 87).attr("y", 65);
 }
 
-PitacoDrawerHelper.prototype.getVideoId = function(videoUrl) {
-  var preVersionTag = "watch?v=";
-  var indexOfPreVersion = videoUrl.indexOf(preVersionTag);
-  if(indexOfPreVersion != -1)
-    return videoUrl.substring(indexOfPreVersion + preVersionTag.length);
-  else
-    return videoUrl.substring(videoUrl.lastIndexOf("/") + 1);
-}
-
 PitacoDrawerHelper.prototype.openPitacoDetailView = function(pitacoInfo) {
   if(!pitacoInfo.author) return;
 
@@ -87,9 +78,7 @@ PitacoDrawerHelper.prototype.openPitacoDetailView = function(pitacoInfo) {
   if(pitacoInfo.video) {
     if(!Array.isArray(pitacoInfo.video)) pitacoInfo.video = [ pitacoInfo.video ];
     pitacoInfo.video.forEach(function(url) {
-      var videoId = this.getVideoId(url);
-      var iFrameTag = $("<iframe src='https://www.youtube.com/embed/" + videoId + "' frameborder='0' allowfullscreen></iframe>");
-      videos.append(iFrameTag);
+      videos.append($("<iframe src='" + url + "' frameborder='0' allowfullscreen></iframe>"));
     }.bind(this));
   }
 
@@ -203,11 +192,10 @@ PitacoDrawerHelper.prototype.displayLastImage = function(fileInput) {
   var theFile = fileInput.files[nFiles-1];
   var reader = new FileReader();
   reader.onload = function (e) {
-    var newDiv = $("<div class='uploaded-image' />").css("background-image", "url(" + e.target.result + ")");
-    var removeImage = $("<div class='image-remove' />");
-    removeImage.append($("<img src='img/close_icon.png'/>"));
+    var newDiv = $("<div class='uploaded-div'/>");
+    var removeImage = $("<div class='content-remove'><img src='img/close_icon.png'/></div>");
     newDiv.append(removeImage);
-    newDiv.append($("<img class='ghost-image' />").attr("src", e.target.result));
+    newDiv.append($("<img class='uploaded-content' />").attr("src", e.target.result));
     removeImage.click(function() {
       newDiv.remove();
       $(fileInput).wrap('<form>').closest('form').get(0).reset();
@@ -217,19 +205,66 @@ PitacoDrawerHelper.prototype.displayLastImage = function(fileInput) {
   reader.readAsDataURL(theFile);
 }
 
+PitacoDrawerHelper.prototype.displaySharedVideo = function(videoId) {
+  var iFrame = $("<iframe src='https://www.youtube.com/embed/" + videoId + "' frameborder='0' allowfullscreen></iframe>");
+  var newDiv = $("<div class='uploaded-div'/>");
+  var removeVideo = $("<div class='content-remove'><img src='img/close_icon.png'/></div>");
+  newDiv.append(removeVideo);
+  newDiv.append(iFrame);
+  removeVideo.click(function() { newDiv.remove(); });
+  $('#uploaded-videos').append(newDiv);
+}
+
+PitacoDrawerHelper.prototype.getVideoId = function(videoUrl) {
+  var preVersionTag = "watch?v=";
+  var indexOfPreVersion = videoUrl.indexOf(preVersionTag);
+  if(indexOfPreVersion != -1)
+    return videoUrl.substring(indexOfPreVersion + preVersionTag.length);
+  else
+    return videoUrl.substring(videoUrl.lastIndexOf("/") + 1);
+}
+
 PitacoDrawerHelper.prototype.addPitacoModalEvents = function() {
   $("#modal-add-pitaco-button-confirm").click(function() {
     alert(this.getContentEditableText("pitaco-text-area"));
+  }.bind(this));
+
+  var pitacoShareUrl = $("#pitaco-share-url");
+
+  $("#modal-pitaco-share-button").click(function() {
+    pitacoShareUrl.toggleClass("hide").val("");
   });
+
+  $("#modal-add-pitaco").on('hidden.bs.modal', function() {
+    var self = $(this);
+    self.find("#uploaded-images").empty();
+    self.find("#uploaded-videos").empty();
+    self.find("#pitaco-text-area").html("");
+  });
+
+  $("#modal-view-pitaco").on('hidden.bs.modal', function() {
+    var self = $(this);
+    self.find(".modal-body-images").empty();
+    self.find(".modal-body-videos").empty();
+    self.find(".modal-view-pitaco-tag-area").empty();
+  });
+
   var fileInput = document.getElementById("modal-pitaco-file-input");
-  $(fileInput).unbind('change').change(function() { this.displayLastImage(fileInput); }.bind(this));
+  $(fileInput).change(function() { this.displayLastImage(fileInput); }.bind(this));
+
+  pitacoShareUrl.keypress(function(e) {
+    if(e.which != 13) return; // pressed key was not the enter button
+    pitacoShareUrl.addClass("hide");
+    var videoId = this.getVideoId(pitacoShareUrl.val());
+    this.displaySharedVideo(videoId);
+  }.bind(this));
 }
 
 PitacoDrawerHelper.prototype.drawAddPitacoButton = function() {
   this.svgDrawerHelper.drawButton(d3.select("#button-dar-pitaco"), "#3498DB", "Dar pitaco", 700, 15, true)
         .on("click", function() {
-            $('#uploaded-images').empty();
-            $("#modal-add-pitaco").modal({show: true, backdrop: "static"});
+          $("#pitaco-share-url").addClass("hide").val("");
+          $("#modal-add-pitaco").modal({show: true, backdrop: "static"});
         });
 }
 

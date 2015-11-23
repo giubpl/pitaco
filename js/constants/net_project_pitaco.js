@@ -36,7 +36,7 @@
               },
               {
                 img: ["img/FE16967CFCAF933B.jpg", "img/B943C01085604582.jpg"],
-								video: "https://youtu.be/yRwupxDOZn0",
+								video: "https://www.youtube.com/embed/yRwupxDOZn0",
 								tags: ["Video", "Aplicativo", "Pepe"],
 								cx: 271,
                 cy: 175,
