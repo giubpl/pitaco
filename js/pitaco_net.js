@@ -157,6 +157,7 @@ PitacoDrawerHelper.prototype.drawPitacoNet = function() {
   this.drawAuthorInfo(d3.select("#pitaco-net-project-author"), this.centralProject.author);
   this.svgDrawerHelper.drawButton(d3.select("#button-dar-pitaco"), "#3498DB", "Dar pitaco", 700, 15, true);
   this.updateProjectInfo();
+  this.drawAddPitacoButton();
 }
 
 PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {
@@ -272,6 +273,5 @@ $(document).ready(function() {
   var drawer = new PitacoDrawerHelper("pitaco");
   drawer.drawPitacoNet();
   drawer.addZoomerBehaviour();
-  drawer.drawAddPitacoButton();
   drawer.addPitacoModalEvents();
 });
