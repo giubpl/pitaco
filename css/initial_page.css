@@ -58,10 +58,6 @@
   padding-bottom: 0px;
 }
 
-#modal-add-pitaco .modal-footer {
-  border-top: 0px;
-}
-
 #modal-add-pitaco .modal-footer button {
   width: 100px !important;
   height: 25px !important;
