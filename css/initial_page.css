@@ -78,6 +78,17 @@
   font-weight: 700;
 }
 
+#upload-icon-pitaco{
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+#embebed-icon-pitaco{
+  width: 16px;
+  margin-right: 8px;
+}
+
 .uploaded-div {
   width: 100%;
   position: relative;
