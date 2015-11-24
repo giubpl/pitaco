@@ -68,6 +68,15 @@ PitacoDrawerHelper.prototype.drawAuthorInfo = function(element, authorInfo) {
   this.svgDrawerHelper.drawText(link, "outros projetos", 700, 14, "#3A99D8", true).attr("x", 87).attr("y", 65);
 }
 
+PitacoDrawerHelper.prototype.getCircleImg = function(pitacoInfo) {
+  if(pitacoInfo.videos && pitacoInfo.videos.length > 0)
+    return this.modalEventsHelper.getVideoImageUrl(pitacoInfo.videos[0]);
+  else if(pitacoInfo.imgs && pitacoInfo.imgs.length > 0)
+    return pitacoInfo.imgs[0];
+  else
+    return pitacoInfo.author ? pitacoInfo.author.img : null;
+}
+
 PitacoDrawerHelper.prototype.drawPitacos = function(branch, pitacos, fatherCx, fatherCy, drawJustLines) {
   if(!pitacos) return;
 
@@ -76,17 +85,7 @@ PitacoDrawerHelper.prototype.drawPitacos = function(branch, pitacos, fatherCx, f
     if(drawJustLines)
       this.svgDrawerHelper.drawLine(branch, fatherCx, fatherCy, pitacoInfo.cx, pitacoInfo.cy);
     else {
-      var circleInfo = { cx: pitacoInfo.cx, cy: pitacoInfo.cy };
-      if(pitacoInfo.video) {
-        var videoUrl = Array.isArray(pitacoInfo.video) ? pitacoInfo.video[0] : pitacoInfo.video;
-        circleInfo.img = this.modalEventsHelper.getVideoImageUrl(videoUrl);
-      }
-      else if(pitacoInfo.img) {
-        circleInfo.img = Array.isArray(pitacoInfo.img) ? pitacoInfo.img[0] : pitacoInfo.img;
-      }
-      else if(pitacoInfo.author) {
-        circleInfo.img = pitacoInfo.author.img;
-      }
+      var circleInfo = { cx: pitacoInfo.cx, cy: pitacoInfo.cy, img: this.getCircleImg(pitacoInfo) };
       this.svgDrawerHelper.drawCircleWithImage(branch, circleInfo, this.pitacoRadius)
           .attr("class", "pitaco-circle")
           .on("click", function() {
@@ -159,6 +158,10 @@ PitacoDrawerHelper.prototype.drawAddPitacoButton = function() {
         .on("click", function() {
           this.modalEventsHelper.openModalAddPitaco(function addPitaco(newPitacoInfo) {
             //TODO
+            newPitacoInfo.cx = 437;
+            newPitacoInfo.cy = 274;
+            this.branches[0].pitacos.push(newPitacoInfo);
+            this.drawPitacoNet();
           }.bind(this));
         }.bind(this));
 }

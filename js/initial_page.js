@@ -14,4 +14,6 @@ $(document).ready(function() {
   var randomNumber = 1 + ((Math.random() * 4) | 0); //numero aleatorio entre 1 (inclusive) e 4 (inclusive)
   $("#logo-top-menu").attr("src", "img/logos/logo_0" + randomNumber + ".svg");
 
+  $("#sidebar-profile-name").text(window.loggedUser.name);
+  $("#sidebar-profile-image").attr("src", window.loggedUser.img);
 });

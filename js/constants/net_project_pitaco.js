@@ -23,24 +23,24 @@
           pitacos:
             [
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 351,
                 cy: 218,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 24,
                 cy: 551,
                 text: ""
               },
               {
-                img: ["img/FE16967CFCAF933B.jpg", "img/B943C01085604582.jpg"],
-								video: "https://www.youtube.com/embed/yRwupxDOZn0",
+                imgs: ["img/FE16967CFCAF933B.jpg", "img/B943C01085604582.jpg"],
+								videos: ["https://www.youtube.com/embed/yRwupxDOZn0"],
 								tags: ["Video", "Aplicativo", "Pepe"],
 								cx: 271,
                 cy: 175,
-                text: "Acho o projeto sensasional! Um espaço para troca de pitacos é o que todo designer precisa.",
+                text: "Acho o projeto sensacional! Um espaço para troca de pitacos é o que todo designer precisa.",
 								author: {
 									name: "João da Silva",
 									area: "Designer",
@@ -48,19 +48,18 @@
 								}
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 195,
                 cy: 285,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 140,
                 cy: 340,
                 text: ""
               },
               {
-                img: "img/users_pitaqueiros/05.jpg",
                 cx: 120,
                 cy: 440,
                 text: "Amei este projeto! Acho que ele é super útil inclusive para a área de direito, no qual várias pessoas precisam compartilhar textos e escrever textos em conjunto",
@@ -71,55 +70,55 @@
 								}
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 215,
                 cy: 546,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 200,
                 cy: 200,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 103,
                 cy: 248,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 315,
                 cy: 115,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 50,
                 cy: 360,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 94,
                 cy: 560,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 245,
                 cy: 656,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 310,
                 cy: 660,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 326,
                 cy: 596,
                 text: ""
@@ -135,37 +134,36 @@
           pitacos:
             [
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 722,
                 cy: 695,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 670,
                 cy: 205,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 726,
                 cy: 160,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 800,
                 cy: 374,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 827,
                 cy: 561,
                 text: ""
               },
               {
-                img: "img/users_pitaqueiros/01.jpg",
                 cx: 807,
                 cy: 458,
                 text: "Acho que o visual poderia ser melhor. Estava pensando que poderia haver algum tipo de feed dos pitacos mais recentes, como uma forma diferenciada do usuário visualizar as informações relevantes a ele.",
@@ -176,7 +174,6 @@
 								},
 								pitacos: [
 									{
-		                img: "img/users_pitaqueiros/02.jpg",
 		                cx: 853,
 		                cy: 506,
 		                text: "Concordo 100%",
@@ -187,7 +184,6 @@
 										}
 		              },
 									{
-		                img: "img/users_pitaqueiros/05.jpg",
 		                cx: 927,
 										cy: 433,
 		                text: "Discordo 100%",
@@ -200,19 +196,18 @@
 								]
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 743,
                 cy: 607,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 844,
                 cy: 413,
                 text: ""
               },
               {
-                img: "img/users_pitaqueiros/03.jpg",
                 cx: 723,
                 cy: 306,
                 text: "Gostei bastante do projeto, mas ainda existem muitas funcionalidades que deveriam ser implementadas. Uma funcionalidade que acharia interessante seria um chat para que os usuários se comunicassem para combinar detalhes do projeto",
@@ -223,31 +218,31 @@
 								}
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 861,
                 cy: 241,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 839,
                 cy: 700,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 922,
                 cy: 597,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 883,
                 cy: 680,
                 text: ""
               },
               {
-                img: "img/fulano.jpg",
+                imgs: ["img/fulano.jpg"],
                 cx: 670,
                 cy: 697,
                 text: ""

@@ -122,7 +122,6 @@
 #pitaco-text-area {
     border: 1px solid #ccc;
     min-height: 100px;
-    max-height: 200px;
     font-family: "Roboto";
     -webkit-user-select: text;
     -khtml-user-select: text;
@@ -143,6 +142,7 @@
 .modal-body-text {
   margin-top: 20px;
   margin-bottom: 30px;
+  font-size: 16px;
 }
 
 .modal-body-header {
