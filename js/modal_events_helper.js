@@ -6,18 +6,20 @@ PitacoModalEventsHelper.prototype.displayLastImage = function(fileInput) {
   if(nFiles == 0) return;
   var theFile = fileInput.files[nFiles-1];
   var reader = new FileReader();
-  reader.onload = function (e) {
-    var newDiv = $("<div class='uploaded-div'/>");
-    var removeImage = $("<div class='content-remove'><img src='img/close_icon.png'/></div>");
-    newDiv.append(removeImage);
-    newDiv.append($("<img class='uploaded-content' />").attr("src", e.target.result));
-    removeImage.click(function() {
-      newDiv.remove();
-      $(fileInput).wrap('<form>').closest('form').get(0).reset();
-    });
-    $('#uploaded-images').append(newDiv);
-  };
+  reader.onload = function (e) { this.displaySharedImage(e.target.result); }.bind(this);
   reader.readAsDataURL(theFile);
+}
+
+PitacoModalEventsHelper.prototype.displaySharedImage = function(imageUrl) {
+  var newDiv = $("<div class='uploaded-div'/>");
+  var removeImage = $("<div class='content-remove'><img src='img/close_icon.png'/></div>");
+  newDiv.append(removeImage);
+  newDiv.append($("<img class='uploaded-content' />").attr("src", imageUrl));
+  removeImage.click(function() {
+    newDiv.remove();
+    $(fileInput).wrap('<form>').closest('form').get(0).reset();
+  });
+  $('#uploaded-images').append(newDiv);
 }
 
 PitacoModalEventsHelper.prototype.displaySharedVideo = function(videoId) {
@@ -78,8 +80,11 @@ PitacoModalEventsHelper.prototype.addPitacoModalEvents = function() {
   pitacoShareUrl.keypress(function(e) {
     if(e.which != 13) return; // pressed key was not the enter button
     pitacoShareUrl.addClass("hide");
-    var videoId = this.getVideoId(pitacoShareUrl.val());
-    this.displaySharedVideo(videoId);
+    var url = pitacoShareUrl.val();
+    if((url.match(/\.(jpeg|jpg|gif|png)$/) != null))
+      this.displaySharedImage(url);
+    else
+      this.displaySharedVideo(this.getVideoId(url));
   }.bind(this));
 }
 

@@ -9,6 +9,7 @@ function PitacoDrawerHelper(projectName) {
   this.centralProject = window.projectNet[projectName].centralProject;
   this.branches = window.projectNet[projectName].branches;
   this.activeBranchId = "";
+  this.isAddPitacoMode = false;
   this.svgDrawerHelper = new SVGDrawerHelper();
   this.modalEventsHelper = new PitacoModalEventsHelper();
 }
@@ -89,7 +90,10 @@ PitacoDrawerHelper.prototype.drawPitacos = function(branch, pitacos, fatherCx, f
       this.svgDrawerHelper.drawCircleWithImage(branch, circleInfo, this.pitacoRadius)
           .attr("class", "pitaco-circle")
           .on("click", function() {
-            if(pitacoInfo.author) {
+            if(this.isAddPitacoMode) {
+              this.openModalAddPitacoWithSource(pitacoInfo);
+            }
+            else if(pitacoInfo.author) {
               this.drawAuthorInfo(d3.select("#modal-view-pitaco-author"), pitacoInfo.author);
               this.modalEventsHelper.openPitacoDetailView(pitacoInfo);
             }
@@ -102,7 +106,9 @@ PitacoDrawerHelper.prototype.drawBranch = function(element, branchInfo, styles) 
   var branch = element.append("g").attr("id", branchInfo.id);
   this.svgDrawerHelper.drawLine(branch, this.centralProject.cx, this.centralProject.cy, branchInfo.cx, branchInfo.cy);
   this.drawPitacos(branch, branchInfo.pitacos, branchInfo.cx, branchInfo.cy, true);
-  this.svgDrawerHelper.drawSimpleCircle(branch, branchInfo, this.branchRadius);
+  this.svgDrawerHelper.drawSimpleCircle(branch, branchInfo, this.branchRadius).on("click", function() {
+    if(this.isAddPitacoMode) this.openModalAddPitacoWithSource(branchInfo);
+  }.bind(this));
   this.drawPitacos(branch, branchInfo.pitacos, branchInfo.cx, branchInfo.cy, false);
   styles.push("#" + branchInfo.id + ":hover, #" + branchInfo.id + ".active-display");
   styles.push("{fill:" + branchInfo.color + "; stroke:" + branchInfo.color + ";}");
@@ -153,17 +159,39 @@ PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {
       });
 }
 
+PitacoDrawerHelper.prototype.enterAddPitacoMode = function() {
+  this.isAddPitacoMode = true;
+  d3.select(document).on("keyup", function() {
+    if(d3.event.keyCode == 27) { //esc key
+      this.leaveAddPitacoMode();
+    }
+  }.bind(this));
+  d3.select("#pitaco-net-svg").style("cursor", "crosshair");
+}
+
+PitacoDrawerHelper.prototype.leaveAddPitacoMode = function() {
+  this.isAddPitacoMode = false;
+  d3.select(document).on("keyup", null);
+  d3.select("#pitaco-net-svg").style("cursor", "auto");
+}
+
+PitacoDrawerHelper.prototype.openModalAddPitacoWithSource = function(source) {
+  this.leaveAddPitacoMode();
+  this.modalEventsHelper.openModalAddPitaco(function addPitaco(newPitacoInfo) {
+    var randomNumberX = -100 + ((Math.random() * 200) | 0);
+    var randomNumberY = -100 + ((Math.random() * 200) | 0);
+    if(Math.abs(randomNumberX) + Math.abs(randomNumberY) < 50) randomNumberY = 50;
+    newPitacoInfo.cx = source.cx + randomNumberX;
+    newPitacoInfo.cy = source.cy + randomNumberY;
+    source.pitacos = source.pitacos || [];
+    source.pitacos.push(newPitacoInfo);
+    this.drawPitacoNet();
+  }.bind(this));
+}
+
 PitacoDrawerHelper.prototype.drawAddPitacoButton = function() {
   this.svgDrawerHelper.drawButton(d3.select("#button-dar-pitaco"), "#3498DB", "Dar pitaco", 700, 15, true)
-        .on("click", function() {
-          this.modalEventsHelper.openModalAddPitaco(function addPitaco(newPitacoInfo) {
-            //TODO
-            newPitacoInfo.cx = 437;
-            newPitacoInfo.cy = 274;
-            this.branches[0].pitacos.push(newPitacoInfo);
-            this.drawPitacoNet();
-          }.bind(this));
-        }.bind(this));
+        .on("click", this.enterAddPitacoMode.bind(this));
 }
 
 $(document).ready(function() {
