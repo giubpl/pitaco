@@ -11,7 +11,8 @@
 					name: "Jonathan Carvalhosa",
 					area: "Programador",
 					img: "img/fulano.jpg"
-				}
+				},
+				availableTags: ["saúde", "nutrição", "frutas", "saudável", "alergia", "allergioévida"],
       },
       branches : [
         {

@@ -54,8 +54,15 @@
   color: #eeeeee;
 }
 
+#modal-add-pitaco .modal-footer {
+  border: 0px;
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
 #modal-add-pitaco .modal-body {
   padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 #modal-add-pitaco .modal-footer button {
@@ -64,6 +71,76 @@
   font-size: 14px;
   font-weight: 300;
   padding: 0px;
+}
+
+#pitaco-add-modal-tags {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.ui-autocomplete.ui-menu {
+  z-index: 1051;
+  border-color: #cccccc;
+  box-shadow: 2px 5px 8px rgba(0,0,0,0.3);
+  -o-box-shadow: 2px 5px 8px rgba(0,0,0,0.3);
+  -moz-box-shadow: 2px 5px 8px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 2px 5px 8px rgba(0,0,0,0.3);
+}
+
+.tagit-autocomplete.ui-menu .ui-menu-item {
+  border-radius: 0px;
+  padding: 6px 16px 6px 7px;
+  font-size: 13px;
+  font-family: "Roboto";
+  font-weight: 500px;
+}
+
+.tagit-autocomplete .ui-state-hover, .tagit-autocomplete .ui-state-focus {
+   border: 0px; background: #dddddd;
+ }
+.tagit-autocomplete .ui-state-active  {
+  border: 0px;
+}
+
+ul.tagit li.tagit-choice {
+    font-family: "Roboto";
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border: 0px;
+    background: none;
+    background-color: #111111;
+    font-size: 13px;
+    font-weight: normal;
+}
+ul.tagit li.tagit-choice .tagit-label:not(a) {
+    color: #BBB;
+}
+ul.tagit li.tagit-choice a.tagit-close {
+    text-decoration: none;
+}
+ul.tagit li.tagit-choice .tagit-close {
+    right: .4em;
+}
+ul.tagit li.tagit-choice .ui-icon {
+    display: none;
+}
+ul.tagit li.tagit-choice .tagit-close .text-icon {
+    display: inline;
+    font-family: "Roboto";
+    font-size: 14px;
+    line-height: 16px;
+    color: #BBB;
+}
+ul.tagit li.tagit-choice:hover, ul.tagit li.tagit-choice.remove {
+    background-color: #111111;
+}
+ul.tagit li.tagit-choice a.tagLabel:hover,
+ul.tagit li.tagit-choice a.tagit-close .text-icon:hover {
+    color: #BBB;
 }
 
 #subtitle-pitaco-box{

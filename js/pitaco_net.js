@@ -12,6 +12,10 @@ function PitacoDrawerHelper(projectName) {
   this.isAddPitacoMode = false;
   this.svgDrawerHelper = new SVGDrawerHelper();
   this.modalEventsHelper = new PitacoModalEventsHelper();
+
+  this.availableTagsDict = {};
+  for(var i=0; i < this.centralProject.availableTags.length; i++)
+    this.availableTagsDict[this.centralProject.availableTags[i]] = true;
 }
 
 PitacoDrawerHelper.prototype.switchActiveBranch = function(newActiveBranchId) {
@@ -175,18 +179,32 @@ PitacoDrawerHelper.prototype.leaveAddPitacoMode = function() {
   d3.select("#pitaco-net-svg").style("cursor", "auto");
 }
 
+PitacoDrawerHelper.prototype.storeNewTags = function(tags) {
+  for(var i=0; i < tags.length; i++)
+    if(!this.availableTagsDict[tags[i]]) {
+      this.availableTagsDict[tags[i]] = true;
+      this.centralProject.availableTags.push(tags[i]);
+    }
+}
+
+PitacoDrawerHelper.prototype.addPitacoOnSource = function(source, newPitacoInfo) {
+  var randomNumberX = -100 + ((Math.random() * 200) | 0);
+  var randomNumberY = -100 + ((Math.random() * 200) | 0);
+  if(Math.abs(randomNumberX) + Math.abs(randomNumberY) < 50) randomNumberY = 50;
+  newPitacoInfo.cx = source.cx + randomNumberX;
+  newPitacoInfo.cy = source.cy + randomNumberY;
+  source.pitacos = source.pitacos || [];
+  source.pitacos.push(newPitacoInfo);
+  this.storeNewTags(newPitacoInfo.tags);
+  this.drawPitacoNet();
+}
+
 PitacoDrawerHelper.prototype.openModalAddPitacoWithSource = function(source) {
   this.leaveAddPitacoMode();
-  this.modalEventsHelper.openModalAddPitaco(function addPitaco(newPitacoInfo) {
-    var randomNumberX = -100 + ((Math.random() * 200) | 0);
-    var randomNumberY = -100 + ((Math.random() * 200) | 0);
-    if(Math.abs(randomNumberX) + Math.abs(randomNumberY) < 50) randomNumberY = 50;
-    newPitacoInfo.cx = source.cx + randomNumberX;
-    newPitacoInfo.cy = source.cy + randomNumberY;
-    source.pitacos = source.pitacos || [];
-    source.pitacos.push(newPitacoInfo);
-    this.drawPitacoNet();
-  }.bind(this));
+  this.modalEventsHelper.openModalAddPitaco(
+    this.centralProject.availableTags,
+    function addPitaco(newPitacoInfo) { this.addPitacoOnSource(source, newPitacoInfo); }.bind(this)
+  );
 }
 
 PitacoDrawerHelper.prototype.drawAddPitacoButton = function() {

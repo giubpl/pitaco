@@ -65,6 +65,7 @@ PitacoModalEventsHelper.prototype.addPitacoModalEvents = function() {
     self.find("#uploaded-images").empty();
     self.find("#uploaded-videos").empty();
     self.find("#pitaco-text-area").html("");
+    self.find('#pitaco-add-modal-tags').tagit('removeAll');
   });
 
   $("#modal-view-pitaco").on('hidden.bs.modal', function() {
@@ -114,14 +115,16 @@ PitacoModalEventsHelper.prototype.openPitacoDetailView = function(pitacoInfo) {
   modalElement.modal("show");
 }
 
-PitacoModalEventsHelper.prototype.openModalAddPitaco = function(callbackAddPitaco) {
+PitacoModalEventsHelper.prototype.openModalAddPitaco = function(availableTags, callbackAddPitaco) {
   $("#pitaco-share-url").addClass("hide").val("");
+  $('#pitaco-add-modal-tags').tagit({availableTags: availableTags});
   $("#modal-add-pitaco-button-confirm").unbind('click').click(function() {
     var author = window.loggedUser;
     var text = $("#pitaco-text-area").html();
     var imgs = $("#uploaded-images .uploaded-content").map(function() { return $(this).attr('src'); }).get();
     var videos = $("#uploaded-videos iframe").map(function() { return $(this).attr('src'); }).get();
-    var newPitacoInfo = { author: author, text: text, imgs: imgs, videos: videos };
+    var tags = $("#pitaco-add-modal-tags").tagit("assignedTags");
+    var newPitacoInfo = { author: author, text: text, imgs: imgs, videos: videos, tags: tags };
     callbackAddPitaco(newPitacoInfo);
     $("#modal-add-pitaco").modal('hide');
   }.bind(this));
