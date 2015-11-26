@@ -184,17 +184,16 @@ PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {
   var zoomer = d3.behavior.zoom().scaleExtent([0.1,10]).on("zoom", function() {
     zoom_group.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
   });
-  svg.call(zoomer)
+  svg.call(zoomer);
+      /* XXX: this is a hack! Enable to double click and see point coordinates
       .on("dblclick.zoom", null)
-      //FIXME: this is a hack! Remove when development is finished
       .on("dblclick", function() {
-          if(!d3.event.shiftKey)
-            return;
           var pt = svg.node().createSVGPoint();
           pt.x = d3.event.x; pt.y = d3.event.y;
           pt = pt.matrixTransform(svg.node().getScreenCTM().inverse());
           alert("cx=" + (pt.x-50) + " cy=" + (pt.y+80));
       });
+      */
 }
 
 PitacoDrawerHelper.prototype.enterAddPitacoMode = function() {

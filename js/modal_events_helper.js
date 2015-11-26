@@ -1,7 +1,7 @@
 function PitacoModalEventsHelper() {
 };
 
-PitacoModalEventsHelper.prototype.displayLastImage = function(fileInput) {
+PitacoModalEventsHelper.prototype.displayUploadedImage = function(fileInput) {
   var nFiles = fileInput.files.length;
   if(nFiles == 0) return;
   var theFile = fileInput.files[nFiles-1];
@@ -30,14 +30,6 @@ PitacoModalEventsHelper.prototype.displaySharedVideo = function(videoId) {
   newDiv.append(iFrame);
   removeVideo.click(function() { newDiv.remove(); });
   $('#uploaded-videos').append(newDiv);
-}
-
-PitacoModalEventsHelper.prototype.getContentEditableText = function(element) {
-  var ce = $("<pre />").html(element.html());
-    ce.find("div").replaceWith(function() { return "\n" + this.innerHTML; });
-    ce.find("p").replaceWith(function() { return this.innerHTML + "<br>"; });
-    ce.find("br").replaceWith("\n");
-  return ce.text();
 }
 
 PitacoModalEventsHelper.prototype.getVideoId = function(videoUrl) {
@@ -76,7 +68,7 @@ PitacoModalEventsHelper.prototype.addPitacoModalEvents = function() {
   });
 
   var fileInput = document.getElementById("modal-pitaco-file-input");
-  $(fileInput).change(function() { this.displayLastImage(fileInput); }.bind(this));
+  $(fileInput).change(function() { this.displayUploadedImage(fileInput); }.bind(this));
 
   pitacoShareUrl.keypress(function(e) {
     if(e.which != 13) return; // pressed key was not the enter button
@@ -94,13 +86,13 @@ PitacoModalEventsHelper.prototype.openPitacoDetailView = function(pitacoInfo) {
   modalElement.find(".modal-body-text").html(pitacoInfo.text);
 
   var videos = modalElement.find(".modal-body-videos").empty();
-  if(pitacoInfo.videos) pitacoInfo.videos.forEach(function(video) {
-    videos.append($("<iframe src='" + video + "' frameborder='0' allowfullscreen></iframe>"));
+  if(pitacoInfo.videos) pitacoInfo.videos.forEach(function(videoUrl) {
+    videos.append($("<iframe src='" + videoUrl + "' frameborder='0' allowfullscreen></iframe>"));
   });
 
   var images = modalElement.find(".modal-body-images").empty();
-  if(pitacoInfo.imgs) pitacoInfo.imgs.forEach(function(img) {
-    images.append($("<img src='" + img + "' />"));
+  if(pitacoInfo.imgs) pitacoInfo.imgs.forEach(function(imageUrl) {
+    images.append($("<img src='" + imageUrl + "' />"));
   });
 
   var tagArea = modalElement.find(".modal-view-pitaco-tag-area").empty();
@@ -131,7 +123,7 @@ PitacoModalEventsHelper.prototype.openModalAddPitaco = function(availableTags, c
   $("#modal-add-pitaco").modal({show: true, backdrop: "static"});
 }
 
-$(document).ready(function() {
+$(document).ready(function addPitacoModalEvents() {
   var helper = new PitacoModalEventsHelper();
   helper.addPitacoModalEvents();
 });
