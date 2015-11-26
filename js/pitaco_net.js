@@ -82,24 +82,38 @@ PitacoDrawerHelper.prototype.getCircleImg = function(pitacoInfo) {
     return pitacoInfo.author ? pitacoInfo.author.img : null;
 }
 
-PitacoDrawerHelper.prototype.addDragBehaviour = function(elementImage, elementInfo) {
-  elementInfo.originalCx = elementInfo.cx;
-  elementInfo.originalCy = elementInfo.cy;
-  elementImage.call(d3.behavior.drag()
+PitacoDrawerHelper.prototype.addDragBehaviourToPitaco = function(pitacoImage, pitacoInfo) {
+  pitacoInfo.originalCx = pitacoInfo.cx;
+  pitacoInfo.originalCy = pitacoInfo.cy;
+  pitacoImage.call(d3.behavior.drag()
           .on("dragstart", function() { d3.event.sourceEvent.stopPropagation(); })
           .on("drag", function() {
-              var dx = d3.event.x - elementInfo.originalCx;
-              var dy = d3.event.y - elementInfo.originalCy;
-              elementImage.attr("transform", "translate(" + [dx, dy] + ")");
-              elementInfo.parentLine.attr("x2", d3.event.x).attr("y2", d3.event.y);
-              if(elementInfo.pitacos) elementInfo.pitacos.forEach(function(child) {
+              var dx = d3.event.x - pitacoInfo.originalCx;
+              var dy = d3.event.y - pitacoInfo.originalCy;
+              pitacoImage.attr("transform", "translate(" + [dx, dy] + ")");
+              pitacoInfo.parentLine.attr("x2", d3.event.x).attr("y2", d3.event.y);
+              if(pitacoInfo.pitacos) pitacoInfo.pitacos.forEach(function(child) {
                 child.parentLine.attr("x1", d3.event.x).attr("y1", d3.event.y);
-              });
+              })
           })
           .on("dragend", function() {
-            elementInfo.cx = parseFloat(elementInfo.parentLine.attr("x2"));
-            elementInfo.cy = parseFloat(elementInfo.parentLine.attr("y2"));
+            pitacoInfo.cx = parseFloat(pitacoInfo.parentLine.attr("x2"));
+            pitacoInfo.cy = parseFloat(pitacoInfo.parentLine.attr("y2"));
           })
+      );
+}
+
+PitacoDrawerHelper.prototype.addDragBehaviourToBranch = function(brachGroup, branchInfo) {
+  brachGroup.call(d3.behavior.drag()
+          .on("dragstart", function() { d3.event.sourceEvent.stopPropagation(); })
+          .on("drag", function() {
+              branchInfo.variationX = d3.event.x - branchInfo.cx;
+              branchInfo.variationY = d3.event.y - branchInfo.cy;
+              brachGroup.attr("transform", "translate(" + [branchInfo.variationX, branchInfo.variationY] + ")");
+              branchInfo.parentLine
+                              .attr("x1", this.centralProject.cx - branchInfo.variationX)
+                              .attr("y1", this.centralProject.cy - branchInfo.variationY);
+          }.bind(this))
       );
 }
 
@@ -127,26 +141,29 @@ PitacoDrawerHelper.prototype.drawPitacos = function(branch, pitacos, fatherCx, f
             }
           }.bind(this));
 
-      this.addDragBehaviour(pitacoImage, pitacoInfo);
+      this.addDragBehaviourToPitaco(pitacoImage, pitacoInfo);
     }
   }.bind(this));
 }
 
 PitacoDrawerHelper.prototype.drawBranch = function(element, branchInfo, styles) {
-  var branch = element.append("g").attr("id", branchInfo.id);
-  branchInfo.parentLine = this.svgDrawerHelper.drawLine(
-    branch, this.centralProject.cx, this.centralProject.cy, branchInfo.cx, branchInfo.cy
+  branchInfo.variationX = branchInfo.variationX || 0;
+  branchInfo.variationY = branchInfo.variationY || 0;
+  var branch = element.append("g").attr("id", branchInfo.id)
+                      .attr("transform", "translate(" + [branchInfo.variationX, branchInfo.variationY] + ")");
+  branchInfo.parentLine = this.svgDrawerHelper.drawLine(branch, 
+    this.centralProject.cx - branchInfo.variationX,
+    this.centralProject.cy - branchInfo.variationY,
+    branchInfo.cx, branchInfo.cy
   );
+  this.addDragBehaviourToBranch(branch, branchInfo);
 
   this.drawPitacos(branch, branchInfo.pitacos, branchInfo.cx, branchInfo.cy, true);
-
   var branchImage = this.svgDrawerHelper.drawSimpleCircle(branch, branchInfo, this.branchRadius)
       .on("click", function() {
         if(d3.event.defaultPrevented) return;
         if(this.isAddPitacoMode) this.openModalAddPitacoWithSource(branchInfo);
       }.bind(this));
-  this.addDragBehaviour(branchImage, branchInfo);
-
   this.drawPitacos(branch, branchInfo.pitacos, branchInfo.cx, branchInfo.cy, false);
   styles.push("#" + branchInfo.id + ":hover, #" + branchInfo.id + ".active-display");
   styles.push("{fill:" + branchInfo.color + "; stroke:" + branchInfo.color + ";}");
