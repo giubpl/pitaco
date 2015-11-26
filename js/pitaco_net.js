@@ -82,18 +82,40 @@ PitacoDrawerHelper.prototype.getCircleImg = function(pitacoInfo) {
     return pitacoInfo.author ? pitacoInfo.author.img : null;
 }
 
+PitacoDrawerHelper.prototype.addDragBehaviour = function(pitacoImage, pitacoInfo) {
+  pitacoInfo.originalCx = pitacoInfo.cx;
+  pitacoInfo.originalCy = pitacoInfo.cy;
+  pitacoImage.call(d3.behavior.drag()
+          .on("dragstart", function() { d3.event.sourceEvent.stopPropagation(); })
+          .on("drag", function() {
+              var dx = d3.event.x - pitacoInfo.originalCx;
+              var dy = d3.event.y - pitacoInfo.originalCy;
+              pitacoImage.attr("transform", "translate(" + [dx, dy] + ")");
+              pitacoInfo.parentLine.attr("x2", d3.event.x).attr("y2", d3.event.y);
+              if(pitacoInfo.pitacos) pitacoInfo.pitacos.forEach(function(child) {
+                child.parentLine.attr("x1", d3.event.x).attr("y1", d3.event.y);
+              })
+          })
+          .on("dragend", function() {
+            pitacoInfo.cx = parseFloat(pitacoInfo.parentLine.attr("x2"));
+            pitacoInfo.cy = parseFloat(pitacoInfo.parentLine.attr("y2"));
+          })
+      );
+}
+
 PitacoDrawerHelper.prototype.drawPitacos = function(branch, pitacos, fatherCx, fatherCy, drawJustLines) {
   if(!pitacos) return;
 
   pitacos.forEach(function(pitacoInfo) {
     this.drawPitacos(branch, pitacoInfo.pitacos, pitacoInfo.cx, pitacoInfo.cy, drawJustLines);
     if(drawJustLines)
-      this.svgDrawerHelper.drawLine(branch, fatherCx, fatherCy, pitacoInfo.cx, pitacoInfo.cy);
+      pitacoInfo.parentLine = this.svgDrawerHelper.drawLine(branch, fatherCx, fatherCy, pitacoInfo.cx, pitacoInfo.cy);
     else {
       var circleInfo = { cx: pitacoInfo.cx, cy: pitacoInfo.cy, img: this.getCircleImg(pitacoInfo) };
-      this.svgDrawerHelper.drawCircleWithImage(branch, circleInfo, this.pitacoRadius)
+      var pitacoImage = this.svgDrawerHelper.drawCircleWithImage(branch, circleInfo, this.pitacoRadius)
           .attr("class", "pitaco-circle")
           .on("click", function() {
+            if(d3.event.defaultPrevented) return;
             if(this.isAddPitacoMode) {
               this.openModalAddPitacoWithSource(pitacoInfo);
             }
@@ -102,6 +124,8 @@ PitacoDrawerHelper.prototype.drawPitacos = function(branch, pitacos, fatherCx, f
               this.modalEventsHelper.openPitacoDetailView(pitacoInfo);
             }
           }.bind(this));
+
+      this.addDragBehaviour(pitacoImage, pitacoInfo);
     }
   }.bind(this));
 }
