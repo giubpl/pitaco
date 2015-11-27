@@ -162,8 +162,8 @@ PitacoDrawerHelper.prototype.drawBranch = function(element, branchInfo, styles) 
   branchInfo.variationY = branchInfo.variationY || 0;
   var branch = element.append("g").attr("id", branchInfo.id);
   branchInfo.parentLine = this.svgDrawerHelper.drawLine(branch,
-    this.centralProject.cx, this.centralProject.cy, branchInfo.cx, branchInfo.cy);
-  var draggableGroup = branch.append("g").attr("transform", "translate(" + [branchInfo.variationX, branchInfo.variationY] + ")");
+    this.centralProject.cx, this.centralProject.cy, branchInfo.cx + branchInfo.variationX, branchInfo.cy + branchInfo.variationY);
+  var draggableGroup = branch.append("g").attr("transform", this.getBranchTransform(branchInfo));
   this.addDragBehaviourToBranch(draggableGroup, branchInfo);
 
   this.drawPitacos(draggableGroup, branchInfo.pitacos, branchInfo.cx, branchInfo.cy, true);
