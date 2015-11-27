@@ -24,18 +24,6 @@
           pitacos:
             [
               {
-                imgs: ["img/fulano.jpg"],
-                cx: 351,
-                cy: 218,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 24,
-                cy: 551,
-                text: ""
-              },
-              {
                 imgs: ["img/FE16967CFCAF933B.jpg", "img/B943C01085604582.jpg"],
 								videos: ["https://www.youtube.com/embed/yRwupxDOZn0"],
 								tags: ["Video", "Aplicativo", "Pepe"],
@@ -43,22 +31,10 @@
                 cy: 175,
                 text: "Acho o projeto sensacional! Um espaço para troca de pitacos é o que todo designer precisa.",
 								author: {
-									name: "João da Silva",
+									name: "Gabriel Franklin",
 									area: "Designer",
 									img: "img/users_pitaqueiros/02.jpg"
 								}
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 195,
-                cy: 285,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 140,
-                cy: 340,
-                text: ""
               },
               {
                 cx: 120,
@@ -70,60 +46,6 @@
 									img: "img/users_pitaqueiros/05.jpg"
 								}
               },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 215,
-                cy: 546,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 200,
-                cy: 200,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 103,
-                cy: 248,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 315,
-                cy: 115,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 50,
-                cy: 360,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 94,
-                cy: 560,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 245,
-                cy: 656,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 310,
-                cy: 660,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 326,
-                cy: 596,
-                text: ""
-              },
             ]
         },
         {
@@ -134,36 +56,6 @@
           cy: 430,
           pitacos:
             [
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 722,
-                cy: 695,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 670,
-                cy: 205,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 726,
-                cy: 160,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 800,
-                cy: 374,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 827,
-                cy: 561,
-                text: ""
-              },
               {
                 cx: 807,
                 cy: 458,
@@ -179,7 +71,7 @@
 		                cy: 506,
 		                text: "Concordo 100%",
 										author: {
-											name: "João da Silva",
+											name: "Gabriel Franklin",
 											area: "Designer",
 											img: "img/users_pitaqueiros/02.jpg"
 										}
@@ -197,18 +89,6 @@
 								]
               },
               {
-                imgs: ["img/fulano.jpg"],
-                cx: 743,
-                cy: 607,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 844,
-                cy: 413,
-                text: ""
-              },
-              {
                 cx: 723,
                 cy: 306,
                 text: "Gostei bastante do projeto, mas ainda existem muitas funcionalidades que deveriam ser implementadas. Uma funcionalidade que acharia interessante seria um chat para que os usuários se comunicassem para combinar detalhes do projeto",
@@ -217,36 +97,6 @@
 									area: "Designer",
 									img: "img/users_pitaqueiros/03.jpg"
 								}
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 861,
-                cy: 241,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 839,
-                cy: 700,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 922,
-                cy: 597,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 883,
-                cy: 680,
-                text: ""
-              },
-              {
-                imgs: ["img/fulano.jpg"],
-                cx: 670,
-                cy: 697,
-                text: ""
               },
             ]
         },
