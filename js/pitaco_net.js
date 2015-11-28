@@ -222,6 +222,10 @@ PitacoDrawerHelper.prototype.addZoomerBehaviour = function() {
 }
 
 PitacoDrawerHelper.prototype.enterAddPitacoMode = function() {
+  if(this.isAddPitacoMode) {
+      this.leaveAddPitacoMode();
+      return;
+  }
   this.isAddPitacoMode = true;
   d3.select(document).on("keyup", function() {
     if(d3.event.keyCode == 27) { //esc key
@@ -229,12 +233,14 @@ PitacoDrawerHelper.prototype.enterAddPitacoMode = function() {
     }
   }.bind(this));
   d3.select("#pitaco-net-svg").style("cursor", "crosshair");
+  d3.select("#button-dar-pitaco").classed("active-display", true);
 }
 
 PitacoDrawerHelper.prototype.leaveAddPitacoMode = function() {
   this.isAddPitacoMode = false;
   d3.select(document).on("keyup", null);
   d3.select("#pitaco-net-svg").style("cursor", "auto");
+  d3.select("#button-dar-pitaco").classed("active-display", false);
 }
 
 PitacoDrawerHelper.prototype.storeNewTags = function(tags) {
@@ -267,7 +273,8 @@ PitacoDrawerHelper.prototype.openModalAddPitacoWithSource = function(source) {
 
 PitacoDrawerHelper.prototype.drawAddPitacoButton = function() {
   this.svgDrawerHelper.drawButton(d3.select("#button-dar-pitaco"), "#3498DB", "Dar pitaco", 700, 15, true)
-        .on("click", this.enterAddPitacoMode.bind(this));
+        .on("click", this.enterAddPitacoMode.bind(this))
+        .append("style").text(".active-display rect { fill: #0C4971 }");
 }
 
 $(document).ready(function() {
