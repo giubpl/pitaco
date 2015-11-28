@@ -166,7 +166,9 @@ PitacoDrawerHelper.prototype.drawPitacos = function(branchInfo, branchGroup, pit
             }
             else if(pitacoInfo.author) {
               this.drawAuthorInfo(d3.select("#modal-view-pitaco-author"), pitacoInfo.author);
-              this.modalEventsHelper.openPitacoDetailView(pitacoInfo);
+              this.modalEventsHelper.openPitacoDetailView(
+                pitacoInfo, this.openModalAddPitacoWithSource.bind(this)
+              );
             }
           }.bind(this));
 

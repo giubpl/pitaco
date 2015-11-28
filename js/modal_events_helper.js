@@ -83,7 +83,7 @@ PitacoModalEventsHelper.prototype.addPitacoModalEvents = function() {
   }.bind(this));
 }
 
-PitacoModalEventsHelper.prototype.openPitacoDetailView = function(pitacoInfo) {
+PitacoModalEventsHelper.prototype.openPitacoDetailView = function(pitacoInfo, callbackAnswerButton) {
   var modalElement = $("#modal-view-pitaco");
   modalElement.find(".modal-body-text").html(pitacoInfo.text);
 
@@ -105,6 +105,17 @@ PitacoModalEventsHelper.prototype.openPitacoDetailView = function(pitacoInfo) {
           .css("margin-left", "3px").css("cursor", "default");
     tagArea.append(newButton);
   });
+
+  $("#modal-view-pitaco-answer-button").unbind('click').click(function() {
+    if(!this.isWaitingToClose) {
+      this.isWaitingToClose = true;
+      modalElement.one('hidden.bs.modal', function() {
+        this.isWaitingToClose = false;
+        callbackAnswerButton(pitacoInfo);
+      }.bind(this));
+      modalElement.modal("hide");
+    }
+  }.bind(this));
 
   modalElement.modal("show");
 }

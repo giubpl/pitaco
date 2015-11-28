@@ -40,7 +40,7 @@
   margin-bottom: 0px;
 }
 
-#modal-add-pitaco .modal-footer button {
+.modal-footer button {
   width: 80px !important;
   height: 25px !important;
   font-size: 14px;
