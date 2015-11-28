@@ -30,7 +30,27 @@ span, a {
 
 
 .modal-dialog, .btn {
-  font-family: "Roboto"
+  font-family: "Roboto";
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #858585;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #858585;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #858585;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #858585;
+}
+
+.placeholdable:empty:before {
+    content:attr(data-placeholder);
+    color: #858585;
 }
 
 .image-display {
