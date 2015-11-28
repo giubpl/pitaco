@@ -5,7 +5,7 @@
       centralProject : {
         cx: 480,
         cy: 425,
-        img: "img/B943C0108560459E.jpg",
+        img: "img/logo_allergio.jpg",
 				name: "Allergio app",
 				author: {
 					name: "Jonathan Carvalhosa",
