@@ -76,6 +76,7 @@
 
 #net-central {
   opacity: 1;
+  cursor: pointer;
 }
 
 #net-central:hover {

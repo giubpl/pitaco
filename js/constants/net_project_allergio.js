@@ -13,6 +13,7 @@
 					img: "img/fulano.jpg"
 				},
 				availableTags: ["saúde", "nutrição", "frutas", "saudável", "alergia", "allergioévida"],
+				detailImg: "img/detalhes_do_Projeto_Allergio.png",
       },
       branches : [
         {

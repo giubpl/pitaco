@@ -11,7 +11,7 @@ function PitacoDrawerHelper(projectName) {
   this.activeBranchId = "";
   this.isAddPitacoMode = false;
   this.svgDrawerHelper = new SVGDrawerHelper();
-  this.modalEventsHelper = new PitacoModalEventsHelper();
+  this.modalEventsHelper = new PitacoModalEventsHelper(this.centralProject);
 
   this.availableTagsDict = {};
   for(var i=0; i < this.centralProject.availableTags.length; i++)
@@ -201,7 +201,11 @@ PitacoDrawerHelper.prototype.drawPitacoTree = function(element) {
   var styles = [];
   this.branches.forEach(function(branchInfo) { this.drawBranch(element, branchInfo, styles); }.bind(this));
   element.append("style").text(styles.join(""));
-  this.svgDrawerHelper.drawCircleWithImage(element, this.centralProject, this.centralRadius).attr("id", "net-central");
+  this.svgDrawerHelper.drawCircleWithImage(element, this.centralProject, this.centralRadius).attr("id", "net-central")
+      .on("click", function() {
+        if(d3.event.defaultPrevented) return;
+        this.modalEventsHelper.openProjectDetail();
+      }.bind(this));
 }
 
 PitacoDrawerHelper.prototype.updateProjectInfo = function() {

@@ -13,6 +13,7 @@
 					img: "img/user_profile.jpg"
 				},
 				availableTags: ["opinião", "amor", "gostei", "naogostei", "faltafazer", "pitacoévida"],
+				detailImg: "img/detalhes_do_Projeto_Pitaco.png",
       },
       branches : [
         {

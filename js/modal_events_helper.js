@@ -1,4 +1,6 @@
-function PitacoModalEventsHelper() {
+function PitacoModalEventsHelper(centralProject) {
+  if(centralProject && centralProject.detailImg)
+    $("#img-project-detail").attr("src", centralProject.detailImg);
 };
 
 PitacoModalEventsHelper.prototype.displayUploadedImage = function(fileInput) {
@@ -124,6 +126,10 @@ PitacoModalEventsHelper.prototype.openModalAddPitaco = function(availableTags, c
     $("#modal-add-pitaco").modal('hide');
   }.bind(this));
   $("#modal-add-pitaco").modal({show: true, backdrop: "static"});
+}
+
+PitacoModalEventsHelper.prototype.openProjectDetail = function() {
+  $("#modal-project-details").modal("show");
 }
 
 $(document).ready(function addPitacoModalEvents() {

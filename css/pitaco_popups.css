@@ -144,6 +144,17 @@
   max-height: 600px;
 }
 
+#modal-project-details .modal-dialog {
+  width: 1200px;
+  position: relative;
+}
+
+#modal-project-details .close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
 .modal-body-text {
   margin-top: 20px;
   margin-bottom: 30px;
