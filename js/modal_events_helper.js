@@ -109,7 +109,10 @@ PitacoModalEventsHelper.prototype.openPitacoDetailView = function(pitacoInfo) {
 
 PitacoModalEventsHelper.prototype.openModalAddPitaco = function(availableTags, callbackAddPitaco) {
   $("#pitaco-share-url").addClass("hide").val("");
-  $('#pitaco-add-modal-tags').tagit({availableTags: availableTags});
+  $('#pitaco-add-modal-tags').tagit({
+    placeholderText: "Coloque aqui palavras chaves que definam o seu pitaco",
+    availableTags: availableTags
+  });
   $("#modal-add-pitaco-button-confirm").unbind('click').click(function() {
     var author = window.loggedUser;
     var text = $("#pitaco-text-area").html();

@@ -17,5 +17,4 @@ $(document).ready(function() {
   $("#sidebar-profile-name").text(window.loggedUser.name);
   $("#sidebar-profile-image").attr("src", window.loggedUser.img);
 
-  $('#pitaco-add-modal-tags').tagit();
 });
