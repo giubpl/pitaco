@@ -22,8 +22,3 @@
 .card:hover {
   opacity: 0.6;
 }
-
-
-.btn:focus, .btn:active .btn.active {
-    outline: none;
-}

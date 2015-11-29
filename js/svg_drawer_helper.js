@@ -33,21 +33,8 @@ SVGDrawerHelper.prototype.drawText = function(element, textMessage, fontWeight, 
   return text;
 }
 
-SVGDrawerHelper.prototype.drawButton = function(element, fill, text, fontWeight, fontSize, hasHover) {
+SVGDrawerHelper.prototype.drawButton = function(element, text, classes) {
   element.selectAll("*").remove();
-  var buttonGroup = element.append("g");
-  var rect = buttonGroup.append("rect")
-                .attr("rx", 3).attr("ry", 3)
-                .attr("width", "100%").attr("height", "100%")
-                .attr("fill", fill);
-  if(hasHover) {
-    buttonGroup.style("cursor", "pointer");
-    buttonGroup.style("opacity", "0.9");
-    buttonGroup.on("mouseover", function() { buttonGroup.style("opacity", "1");});
-    buttonGroup.on("mouseout", function() { buttonGroup.style("opacity", "0.9");});
-  }
-  this.drawText(buttonGroup, text, fontWeight, fontSize, "#FFFFFF", hasHover)
-                .attr("x", "50%").attr("y", "50%")
-                .attr("alignment-baseline", "central").attr("text-anchor", "middle");
-  return buttonGroup;
+  return element.append("foreignObject").attr("width", "100%").attr("height", "100%")
+    .append("xhtml:button").attr("class", "btn " + classes).text(text);
 }

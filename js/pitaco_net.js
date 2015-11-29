@@ -215,7 +215,13 @@ PitacoDrawerHelper.prototype.updateProjectInfo = function() {
   d3.select("#project-info-name").text(this.centralProject.name);
   d3.select("#button-seguir").on("click", function() {
     var self = d3.select(this);
-    self.classed("active-display", !self.classed("active-display"));
+    if(self.classed("btn-primary")) {
+      self.classed("btn-primary", false);
+      self.classed("btn-success", true);
+    } else {
+      self.classed("btn-primary", true);
+      self.classed("btn-success", false);
+    }
   });
 }
 
@@ -258,14 +264,14 @@ PitacoDrawerHelper.prototype.enterAddPitacoMode = function() {
     }
   }.bind(this));
   d3.select("#pitaco-net-svg").style("cursor", "crosshair");
-  d3.select("#button-dar-pitaco").classed("active-display", true);
+  d3.select("#group-button-dar-pitaco button").classed("active", true);
 }
 
 PitacoDrawerHelper.prototype.leaveAddPitacoMode = function() {
   this.isAddPitacoMode = false;
   d3.select(document).on("keyup", null);
   d3.select("#pitaco-net-svg").style("cursor", "auto");
-  d3.select("#button-dar-pitaco").classed("active-display", false);
+  d3.select("#group-button-dar-pitaco button").classed("active", false).node().blur();
 }
 
 PitacoDrawerHelper.prototype.storeNewTags = function(tags) {
@@ -297,9 +303,8 @@ PitacoDrawerHelper.prototype.openModalAddPitacoWithSource = function(source) {
 }
 
 PitacoDrawerHelper.prototype.drawAddPitacoButton = function() {
-  this.svgDrawerHelper.drawButton(d3.select("#button-dar-pitaco"), "#3498DB", "Dar pitaco", 700, 15, true)
-        .on("click", this.enterAddPitacoMode.bind(this))
-        .append("style").text(".active-display rect { fill: #0C4971 }");
+  this.svgDrawerHelper.drawButton(d3.select("#group-button-dar-pitaco"), "Dar pitaco", "btn-primary")
+        .on("click", this.enterAddPitacoMode.bind(this));
 }
 
 $(document).ready(function() {

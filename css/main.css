@@ -28,11 +28,6 @@ span, a {
     overflow-y: scroll;
 }
 
-
-.modal-dialog, .btn {
-  font-family: "Roboto";
-}
-
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:    #858585;
 }

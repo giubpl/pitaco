@@ -12,23 +12,19 @@
 }
 
 #button-seguir {
-  opacity: 0.9;
-  cursor: pointer;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 21px;
+  padding-right: 21px;
+  font-size: 14px;
 }
 
-#button-seguir:hover {
-  opacity: 1;
-}
-
-#button-seguir path {
-  fill: #3498DB;
-}
-
-#button-seguir.active-display {
-  opacity: 1;
-}
-#button-seguir.active-display path {
-  fill: #2ecc71;
+#group-button-dar-pitaco button {
+  height: 35px !important;
+  width: 113px !important;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 0px;
 }
 
 #pitaco-tree {

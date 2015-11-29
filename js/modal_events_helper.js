@@ -99,11 +99,7 @@ PitacoModalEventsHelper.prototype.openPitacoDetailView = function(pitacoInfo, ca
 
   var tagArea = modalElement.find(".modal-view-pitaco-tag-area").empty();
   if(pitacoInfo.tags) pitacoInfo.tags.forEach(function(tag) {
-    var newButton = $("<button />", { class: 'btn btn-xs', html: tag, type: "button" })
-          .css("background-color", "#111111").css("color", "#FFFFFF")
-          .css("font-weight", 300).css("font-size", "11px")
-          .css("margin-left", "3px").css("cursor", "default");
-    tagArea.append(newButton);
+    tagArea.append($("<button />", { class: 'btn btn-tag', html: tag, type: "button" }));
   });
 
   $("#modal-view-pitaco-answer-button").unbind('click').click(function() {
