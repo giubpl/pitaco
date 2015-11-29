@@ -145,14 +145,28 @@
 }
 
 #modal-project-details .modal-dialog {
-  width: 1200px;
+  width: 100%;
+  margin: 0px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: rgba(0, 0, 0, 0.7);
+  max-height: none;
+}
+
+#modal-project-details .modal-body {
   position: relative;
+  padding: 0px;
+  background-color: transparent;
+  height: 100%;
+  max-height: none;
 }
 
 #modal-project-details .close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 10px;
+  right: 10px;
 }
 
 .modal-body-text {
