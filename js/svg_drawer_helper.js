@@ -35,6 +35,7 @@ SVGDrawerHelper.prototype.drawText = function(element, textMessage, fontWeight, 
 
 SVGDrawerHelper.prototype.drawButton = function(element, text, classes) {
   element.selectAll("*").remove();
-  return element.append("foreignObject").attr("width", "100%").attr("height", "100%")
-    .append("xhtml:button").attr("class", "btn " + classes).text(text);
+  var buttonObject = element.append("foreignObject").attr("width", "100%").attr("height", "100%");
+  buttonObject.append("xhtml:button").attr("class", "btn " + classes).text(text);
+  return buttonObject;
 }

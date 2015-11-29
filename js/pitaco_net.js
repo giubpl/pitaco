@@ -218,10 +218,23 @@ PitacoDrawerHelper.prototype.updateProjectInfo = function() {
     if(self.classed("btn-primary")) {
       self.classed("btn-primary", false);
       self.classed("btn-success", true);
+      d3.select("#group-button-seguir").style("display", "none");
+      setTimeout(function() { d3.select("#group-button-seguir").style("display", "block"); }, 0);
     } else {
       self.classed("btn-primary", true);
       self.classed("btn-success", false);
+      d3.select("#group-button-seguir").style("display", "none");
+      setTimeout(function() { d3.select("#group-button-seguir").style("display", "block"); }, 0);
     }
+  });
+  d3.select("#group-button-seguir").on("mouseenter", function() {
+    var self = d3.select(this);
+    self.style("display", "none");
+    self.style("display", "block");
+  }).on("mouseleave", function() {
+    var self = d3.select(this);
+    self.style("display", "none");
+    self.style("display", "block");
   });
 }
 
@@ -229,7 +242,6 @@ PitacoDrawerHelper.prototype.drawPitacoNet = function() {
   this.drawPitacoTree(d3.select("#pitaco-tree"));
   this.drawFilters(d3.select("#pitaco-net-filters"));
   this.drawAuthorInfo(d3.select("#pitaco-net-project-author"), this.centralProject.author);
-  this.svgDrawerHelper.drawButton(d3.select("#button-dar-pitaco"), "#3498DB", "Dar pitaco", 700, 15, true);
   this.updateProjectInfo();
   this.drawAddPitacoButton();
 }
@@ -265,6 +277,10 @@ PitacoDrawerHelper.prototype.enterAddPitacoMode = function() {
   }.bind(this));
   d3.select("#pitaco-net-svg").style("cursor", "crosshair");
   d3.select("#group-button-dar-pitaco button").classed("active", true);
+
+  //somehow it solves a bug that prevents safari from reloading background of foreignObjects
+  d3.select("#group-button-dar-pitaco").style("display", "none");
+  setTimeout(function() { d3.select("#group-button-dar-pitaco").style("display", "block") }, 0);
 }
 
 PitacoDrawerHelper.prototype.leaveAddPitacoMode = function() {
@@ -272,6 +288,10 @@ PitacoDrawerHelper.prototype.leaveAddPitacoMode = function() {
   d3.select(document).on("keyup", null);
   d3.select("#pitaco-net-svg").style("cursor", "auto");
   d3.select("#group-button-dar-pitaco button").classed("active", false).node().blur();
+
+  //somehow it solves a bug that prevents safari from reloading background of foreignObjects
+  d3.select("#group-button-dar-pitaco").style("display", "none");
+  setTimeout(function() { d3.select("#group-button-dar-pitaco").style("display", "block") }, 0);
 }
 
 PitacoDrawerHelper.prototype.storeNewTags = function(tags) {
@@ -304,7 +324,17 @@ PitacoDrawerHelper.prototype.openModalAddPitacoWithSource = function(source) {
 
 PitacoDrawerHelper.prototype.drawAddPitacoButton = function() {
   this.svgDrawerHelper.drawButton(d3.select("#group-button-dar-pitaco"), "Dar pitaco", "btn-primary")
-        .on("click", this.enterAddPitacoMode.bind(this));
+        .on("click", this.enterAddPitacoMode.bind(this))
+        //somehow it solves a bug that prevents safari from reloading background of foreignObjects
+        .on("mouseenter", function() {
+          var self = d3.select(this);
+          self.style("display", "none");
+          self.style("display", "block");
+        }).on("mouseleave", function() {
+          var self = d3.select(this);
+          self.style("display", "none");
+          self.style("display", "block");
+        });
 }
 
 $(document).ready(function() {
