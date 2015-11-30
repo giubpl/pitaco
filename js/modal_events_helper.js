@@ -76,10 +76,10 @@ PitacoModalEventsHelper.prototype.addPitacoModalEvents = function() {
     if(e.which != 13) return; // pressed key was not the enter button
     pitacoShareUrl.addClass("hide");
     var url = pitacoShareUrl.val();
-    if((url.match(/\.(jpeg|jpg|gif|png)$/) != null))
-      this.displaySharedImage(url);
-    else
-      this.displaySharedVideo(this.getVideoId(url));
+    var img = new Image();
+    img.onload =  function() { this.displaySharedImage(url); }.bind(this);
+    img.onerror = function() { this.displaySharedVideo(this.getVideoId(url)); }.bind(this);
+    img.src = url;
   }.bind(this));
 }
 
