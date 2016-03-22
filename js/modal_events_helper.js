@@ -1,7 +1,4 @@
-function PitacoModalEventsHelper(centralProject) {
-  if(centralProject && centralProject.detailImg)
-    $("#img-project-detail").attr("src", centralProject.detailImg);
-};
+function PitacoModalEventsHelper(centralProject) {};
 
 PitacoModalEventsHelper.prototype.displayUploadedImage = function(fileInput) {
   var nFiles = fileInput.files.length;

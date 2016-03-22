@@ -12,6 +12,10 @@
 					area: "Programador",
 					img: "img/fulano.jpg"
 				},
+				totalComments: 41,
+				totalUsers: 25,
+				projectTags: ["Allergy", "app", "Flat design", "intolerance", "helth", "diet", "rekjnaljbfjlbsa"],
+				cardImg: "",
 				availableTags: ["saúde", "nutrição", "frutas", "saudável", "alergia", "allergioévida"],
 				detailImg: "img/detalhes_do_Projeto_Allergio.png",
       },

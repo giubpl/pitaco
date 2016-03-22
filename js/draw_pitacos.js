@@ -1,22 +1,29 @@
-function PitacoDrawerHelper(projectName) {
-  this.centralRadius = 40;
-  this.branchRadius = 8;
-  this.pitacoRadius = 15;
-  this.filterMarginX = 30;
-  this.filterMarginY = 25;
-  this.filterButtonsIncreaseY = 50;
-  this.filterTextDistanceX = 25;
-  this.centralProject = window.projectNet[projectName].centralProject;
-  this.branches = window.projectNet[projectName].branches;
-  this.activeBranchId = "";
-  this.isAddPitacoMode = false;
-  this.svgDrawerHelper = new SVGDrawerHelper();
-  this.modalEventsHelper = new PitacoModalEventsHelper(this.centralProject);
+function PitacoDrawerHelper(projectId) {
+  var projectInfo = window.projectNet[projectId];
+
+  this.centralProject = projectInfo.centralProject;
+
+  if (this.centralProject.detailImg)
+    $("#img-project-detail").attr("src", this.centralProject.detailImg);
 
   this.availableTagsDict = {};
   for(var i=0; i < this.centralProject.availableTags.length; i++)
     this.availableTagsDict[this.centralProject.availableTags[i]] = true;
+
+  this.branches = projectInfo.branches;
+  this.activeBranchId = "";
+  this.isAddPitacoMode = false;
 }
+
+PitacoDrawerHelper.prototype.centralRadius = 40;
+PitacoDrawerHelper.prototype.branchRadius = 8;
+PitacoDrawerHelper.prototype.pitacoRadius = 15;
+PitacoDrawerHelper.prototype.filterMarginX = 30;
+PitacoDrawerHelper.prototype.filterMarginY = 25;
+PitacoDrawerHelper.prototype.filterButtonsIncreaseY = 50;
+PitacoDrawerHelper.prototype.filterTextDistanceX = 25;
+PitacoDrawerHelper.prototype.modalEventsHelper = new PitacoModalEventsHelper();
+PitacoDrawerHelper.prototype.svgDrawerHelper = new SVGDrawerHelper();
 
 PitacoDrawerHelper.prototype.switchActiveBranch = function(newActiveBranchId) {
   if(this.activeBranchId) {

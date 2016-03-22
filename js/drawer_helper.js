@@ -1,6 +1,6 @@
-function SVGDrawerHelper() {
-  this.idCounter = 0;
-}
+function SVGDrawerHelper() {}
+
+SVGDrawerHelper.prototype.idCounter = 0;
 
 SVGDrawerHelper.prototype.getUniqueid = function() {
   return "svg-drawer-id-" + (this.idCounter++);

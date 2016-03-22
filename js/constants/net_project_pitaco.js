@@ -12,6 +12,10 @@
 					area: "Designer",
 					img: "img/user_profile.jpg"
 				},
+				totalComments: 53,
+				totalUsers: 32,
+				projectTags: ["Feedback", "Pitaco", "Metalinguagem", "Projeto final"],
+				cardImg: "img/cards/card_img.jpg",
 				availableTags: ["opinião", "amor", "gostei", "naogostei", "faltafazer", "pitacoévida"],
 				detailImg: "img/detalhes_do_Projeto_Pitaco.png",
       },

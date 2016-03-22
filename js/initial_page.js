@@ -1,10 +1,19 @@
 $(document).ready(function() {
 
-  $('#initial-page img').click(function() {
-    var drawer = new PitacoDrawerHelper($(this).data("project"));
-    drawer.drawPitacoNet();
-    $('#page-tab-activator a[href="#pitaco-net"]').tab("show");
-  });
+  var availableProjects = [
+    "pitaco", "allergio"
+    /*
+    "pitaco", "allergio",
+    "japanTales",
+    "urbanHeroes", "redesignNatGeo", "cepi",
+    "redesignGooglePlay", "vid", "id"
+    */
+  ];
+
+  var cardDrawerHelper = new CardDrawerHelper();
+  for (var i = 0; i < availableProjects.length; i++) {
+    cardDrawerHelper.addCardToInitialPage(availableProjects[i]);
+  }
 
   $('.link-to-initial-page').click(function(e) {
     e.preventDefault();
