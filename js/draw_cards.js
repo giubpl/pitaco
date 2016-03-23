@@ -14,7 +14,7 @@ CardDrawerHelper.prototype.addCardToInitialPage = function(projectId) {
     $('#page-tab-activator a[href="#pitaco-net"]').tab("show");
   });
   this.drawCard(d3.select(card[0]), projectId);
-  $("#initial-page").append(card);
+  $("#dynamic-cards").append(card);
 }
 
 CardDrawerHelper.prototype.drawCommentsIcon = function(element) {
@@ -47,7 +47,7 @@ CardDrawerHelper.prototype.drawCard = function(element, projectId) {
         .attr("x", 145).attr("y", 439);
   this.svgDrawerHelper.drawText(element, authorName, 300, 24, "#BBBBBB", true)
         .attr("x", 144).attr("y", 468);
-  this.svgDrawerHelper.drawText(element, projectTags, 300, 21, "#BBBBBB", true)
+  this.svgDrawerHelper.drawText(element, projectTags, 300, 21, "#BBBBBB", true, 521 - 50 + 5)
         .attr("x", 50).attr("y", 537).attr("opacity", 0.5);
   this.svgDrawerHelper.drawLine(element, 50, 557, 521, 557)
         .attr("fill", "#FFFFFF").attr("stroke", "#FFFFFF").attr("stroke-miterlimit", 10).attr("opacity", 0.5);

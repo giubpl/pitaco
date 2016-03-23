@@ -27,9 +27,26 @@ SVGDrawerHelper.prototype.drawLine = function(element, x1, y1, x2, y2) {
   return element.append("line").attr("x1", x1).attr("y1", y1).attr("x2", x2).attr("y2", y2);
 }
 
-SVGDrawerHelper.prototype.drawText = function(element, textMessage, fontWeight, fontSize, fill, keepCursor) {
-  var text = element.append("text").text(textMessage).attr("font-weight", fontWeight).attr("font-size", fontSize).attr("fill", fill);
+SVGDrawerHelper.prototype.drawText = function(element, textMessage, fontWeight, fontSize, fill, keepCursor, maxWidth) {
+  var text = element.append("text").attr("font-weight", fontWeight).attr("font-size", fontSize).attr("fill", fill);
   if(!keepCursor) text.attr("style", "cursor: default");
+  if (!maxWidth) {
+    text.text(textMessage);
+  } else {
+    text.append('tspan').text(textMessage).attr("visibility", "hidden").each(function wrap() {
+      setTimeout(function() {
+        var self = d3.select(this),
+            textLength = self.node().getComputedTextLength(),
+            text = self.text();
+        while (textLength > maxWidth && text.length > 0) {
+            text = text.slice(0, -1);
+            self.text(text + '...');
+            textLength = self.node().getComputedTextLength();
+        }
+        self.attr("visibility", "visible");
+      }.bind(this), 1);
+    });
+  }
   return text;
 }
 

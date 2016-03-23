@@ -6,7 +6,7 @@
         cx: 480,
         cy: 425,
         img: "img/logo_allergio.jpg",
-				name: "Allergio app",
+				name: "Allergio App",
 				author: {
 					name: "Jonathan Carvalhosa",
 					area: "Programador",
